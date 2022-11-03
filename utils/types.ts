@@ -10,6 +10,7 @@ export interface DiscordUser {
     premium_type: number;
     email: string;
     verified: boolean;
+    banner: string;
 }
 
 export interface DiscordGuild {

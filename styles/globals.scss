@@ -33,4 +33,6 @@ a {
   }
 }
 
-@import "styles/components/NavBar.module";
+@import "components/NavBar.module";
+
+@import "pages/profile.module"

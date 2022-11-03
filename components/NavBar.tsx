@@ -8,9 +8,7 @@ export default function NavBar(props: NavBarProps) {
 
     const [showMenu, setShowMenu] = useState(false)
 
-    const toggleMenu = () => {
-        setShowMenu(!showMenu);
-    }
+    const toggleMenu = () => setShowMenu(!showMenu);
 
     return (
         <div className="navbar">
@@ -20,8 +18,8 @@ export default function NavBar(props: NavBarProps) {
                     Accueil
                     <span></span>
                 </Link>
-                <Link href={"/"} className={router.pathname === "/other" ? "isActive" : ""}>
-                    Other
+                <Link href={"/bots"} className={router.pathname.endsWith("/bot" || "/bots") ? "isActive" : ""}>
+                    Bots
                     <span></span>
                 </Link>
             </div>
