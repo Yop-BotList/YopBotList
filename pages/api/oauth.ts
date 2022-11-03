@@ -5,7 +5,7 @@ import { sign } from 'jsonwebtoken';
 import {DiscordUser} from "../../utils/types";
 
 const scope = ["identify", "guilds.join"].join(" ");
-const REDIRECT_URI = "http://localhost:3000/api/oauth";
+const REDIRECT_URI = `${process.env.APP_URL}/api/oauth`
 
 const OAUTH_PARAMS = new URLSearchParams({
   client_id: `${process.env.CLIENT_ID}`,
