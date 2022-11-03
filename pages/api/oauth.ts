@@ -1,10 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import fetch from 'node-fetch';
+import axios from 'axios';
 import { serialize } from 'cookie';
 import { sign } from 'jsonwebtoken';
 import {DiscordUser} from "../../utils/types";
 
-const scope = ["identify", "email"].join(" ");
+const scope = ["identify", "guilds.join"].join(" ");
 const REDIRECT_URI = "http://localhost:3000/api/oauth";
 
 const OAUTH_PARAMS = new URLSearchParams({
@@ -38,20 +38,24 @@ export default async function handler(
   }).toString();
 
   // @ts-ignore
-  const { access_token, token_type = "Bearer" } = await fetch("https://discord.com/api/oauth2/token", {
-    method: "POST",
+  const { access_token, token_type = "Bearer" } = await axios.post("https://discord.com/api/oauth2/token", body, {
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body
-  }).then(res => res.json());
+  }).then(res => res.data);
 
   if (!access_token || typeof access_token !== "string") return res.redirect(OAuthURL);
 
   // @ts-ignore
-  const me: DiscordUser | { unauthorized: true } = await fetch("https://discord.com/api/users/@me", {
+  const me: DiscordUser | { unauthorized: true } = await axios.get("https://discord.com/api/users/@me", {
     headers: { Authorization: `${token_type} ${access_token}` }
-  }).then(res => res.json());
+  }).then(res => res.data);
 
   if (!("id" in me)) return res.redirect(OAuthURL);
+
+  //await axios.put(`https://discord.com/api/guilds/${process.env.GUILD_ID}/members/${me.id}`, {
+  //     body: { access_token: `${token_type} ${access_token}` }
+  //   }, {
+  //     headers: { Authorization: `Bot ${process.env.CLIENT_TOKEN}` }
+  //   });
 
   const token = sign(me, process.env.JWT_SECRET!, { expiresIn: "1d" });
 

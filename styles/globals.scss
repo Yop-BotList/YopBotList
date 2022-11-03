@@ -1,3 +1,11 @@
+$white: 209 215 212;
+$bg: 54 57 63;
+$dark-bg: 47 49 54;
+$darker-bg: 40 42 47;
+$blue: 88 101 242;
+$light-blue: 100 110 255;
+$main: 242 172 52;
+
 html,
 body {
   padding: 0;
@@ -20,7 +28,9 @@ a {
     color-scheme: dark;
   }
   body {
-    color: white;
-    background: black;
+    color: rgb($white);
+    background: rgb($bg);
   }
 }
+
+@import "styles/components/NavBar.module";

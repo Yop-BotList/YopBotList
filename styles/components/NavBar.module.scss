@@ -1,0 +1,162 @@
+.navbar {
+  background: rgb($dark-bg);
+  display: flex;
+  padding: 1rem;
+
+  .logo {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+  }
+
+  .links {
+    margin-left: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+
+    a {
+      width: 50px;
+      height: 30px;
+      border-radius: 5px;
+      padding: 5px;
+      margin: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: background 0.1s ease-in-out;
+
+      span {
+        width: 0px;
+        height: 3px;
+        margin-top: 2px;
+        border-radius: 5px;
+        background: rgb($white);
+        transition: 0.2s ease-in-out;
+      }
+
+      &:hover {
+        background: rgb($darker-bg);
+
+        &:not(.isActive) > span {
+          width: 5px;
+        }
+
+        &.isActive > span {
+          width: 35px;
+        }
+      }
+
+      &.isActive > span {
+        width: 30px;
+      }
+    }
+  }
+
+  .loginSection {
+    margin-left: auto;
+    order: 100;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    .profile {
+      position: relative;
+      background: transparent;
+      outline: none;
+      border: none;
+      min-width: 50px;
+
+      .infos {
+        background: rgb($blue);
+        border-radius: 5px;
+        display: flex;
+        padding: 5px 0;
+        transition: background 0.1s ease-in-out;
+
+        &:hover {
+          background: rgb($light-blue);
+        }
+
+        img {
+          width: 25px;
+          height: 25px;
+          border-radius: 50%;
+          margin: auto 5px;
+        }
+
+        p {
+          margin: auto 5px;
+          color: rgb($white);
+        }
+      }
+
+      .menu {
+        position: absolute;
+        scale: 0;
+        background: rgb($darker-bg);
+        flex-direction: column;
+        padding: 5px 0;
+        border-radius: 5px;
+        left: 0;
+        right: 0;
+        transition: scale 0.2s ease-in-out;
+
+        &.show {
+          display: flex;
+          scale: 1;
+        }
+
+        a {
+          position: relative;
+
+          p {
+            margin: auto 5px;
+            color: rgb($white);
+          }
+
+          span {
+            position: absolute;
+            background: rgb($blue);
+            width: 0;
+            height: 1rem;
+            transition: width 0.2s ease-in-out;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            border-radius: 0 5px 5px 0;
+          }
+
+          &:hover > span {
+            animation: slide 0.5s ease-in-out forwards;
+          }
+
+          @keyframes slide {
+            0% {
+              border-radius: 0 5px 5px 0;
+            }
+            50% {
+              border-radius: 0 5px 5px 0;
+            }
+            100% {
+              width: 100%;
+              border-radius: 0;
+            }
+          }
+        }
+      }
+    }
+
+    .loginBtn {
+      background: rgb($blue);
+      width: 50px;
+      height: 30px;
+      border-radius: 5px;
+      padding: 5px;
+      transition: background 0.1s ease-in-out;
+
+      &:hover {
+        background: rgb($light-blue);
+      }
+    }
+  }
+}
