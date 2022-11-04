@@ -23,14 +23,13 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: rgb($white);
-    background: rgb($bg);
-  }
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: rgb($bg);
+  color: rgb($white);
 }
 
 @import "components/NavBar.module";
