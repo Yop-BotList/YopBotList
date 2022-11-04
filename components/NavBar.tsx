@@ -2,14 +2,18 @@ import {NavBarProps} from "../utils/types";
 import Link from "next/link";
 import {useRouter} from "next/router";
 import {useState} from "react";
+import AddBotPopup from "./AddBotPopup";
 
 export default function NavBar(props: NavBarProps) {
     const router = useRouter()
 
-    const [showMenu, setShowMenu] = useState(false)
+    const [showMenu, setShowMenu] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
 
     const toggleMenu = () => setShowMenu(!showMenu);
+    const togglePopup = () => setShowPopup(!showPopup);
 
+    // @ts-ignore
     return (
         <div className="navbar">
             <img src="https://cdn.discordapp.com/icons/782644006190055486/abebf32ccdda97f12f9d4aaaa0e064fc.webp" alt="logo" className="logo" />
@@ -18,7 +22,7 @@ export default function NavBar(props: NavBarProps) {
                     Accueil
                     <span></span>
                 </Link>
-                <Link href={"/bots"} className={router.pathname.endsWith("/bot" || "/bots") ? "isActive" : ""}>
+                <Link href={"/bots"} className={router.pathname.startsWith("/bots") ? "isActive" : ""}>
                     Bots
                     <span></span>
                 </Link>
@@ -32,6 +36,10 @@ export default function NavBar(props: NavBarProps) {
                         </div>
 
                         <div className={`menu ${showMenu ? "show" : ""}`}>
+                            <div className="addBot" onClick={togglePopup}>
+                                <p>Ajouter un bot</p>
+                                <span></span>
+                            </div>
                             <Link href={"/profile"}>
                                 <p>Profile</p>
                                 <span></span>
@@ -49,6 +57,7 @@ export default function NavBar(props: NavBarProps) {
                     </div>
                 )}
             </div>
+            <AddBotPopup showFunc={togglePopup} show={showPopup} />
         </div>
     )
 }

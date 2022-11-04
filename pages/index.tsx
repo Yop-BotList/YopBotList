@@ -10,9 +10,10 @@ export default function Index(props: Props) {
         <div>
             <NavBar user={props.user}/>
             <div className="main">
-                <h1>Index</h1>
                 <div className="botCards">
-
+                    {props.bots.map((bot) => (
+                        <BotCard bot={bot} key={bot.botId}/>
+                    ))}
                 </div>
             </div>
         </div>
@@ -24,19 +25,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
     const user = parseUser(ctx);
 
     const getBots = async () => {
-        const bots: { api: any; db: Bot; }[] = [];
         const res = await axios.get(`${process.env.APP_URL}/api/bots`);
-        res.data.data.map(async (bot: Bot) => {
-            //const discordRes = await axios.get(`https://discord.com/api/users/${bot.botId}`, {
-            //                 headers: { Authorization: `Bot ${process.env.CLIENT_TOKEN}` }
-            //             });
-            //
-            //             bots.push({
-            //                 api: discordRes.data,
-            //                 db: bot
-            //             });
-        });
-        return bots;
+        return res.data.data;
     }
 
     return { props: { user: user, bots: await getBots() } };

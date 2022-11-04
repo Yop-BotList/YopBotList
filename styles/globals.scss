@@ -5,6 +5,7 @@ $darker-bg: 40 42 47;
 $blue: 88 101 242;
 $light-blue: 100 110 255;
 $main: 242 172 52;
+$light-main: 255 184 64;
 
 html,
 body {
@@ -32,6 +33,32 @@ body {
   color: rgb($white);
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb($dark-bg);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb($main);
+  border-radius: 5px;
+
+  &:hover {
+    background: rgb(148, 118, 44);
+  }
+}
+
+@media (max-width: 700px) {
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+}
+
+@import "components/AddBotPopup.module";
+@import "components/BotCard.module";
 @import "components/NavBar.module";
 
-@import "pages/profile.module"
+@import "pages/profile.module";

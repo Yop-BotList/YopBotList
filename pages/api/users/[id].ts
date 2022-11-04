@@ -10,14 +10,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     let userBots = await bots.find({ownerId: req.query.id});
 
-    console.log(req.query.id);
-
     if (userBots.length === 0) {
         userBots = await bots.find();
 
         userBots = userBots.filter((bot: Bot) => bot.team.includes(`${req.query.id}`));
-
-        console.log(userBots);
 
         return res.status(200).json(userBots);
     }

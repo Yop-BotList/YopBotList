@@ -23,7 +23,7 @@ export default function profile(props: { user: DiscordUser, bots: Bot[] }) {
                                 <div className="botInfos">
                                     <p className="botPrefix">Prefix: {bot.prefix}</p>
                                     <p className="botVotes">Votes: {bot.likes}</p>
-                                    <Link href={`/${bot.botId}/bot`} className="botLink">View</Link>
+                                    <Link href={`/bots/${bot.botId}`} className="botLink">View</Link>
                                 </div>
                             </div>
                         ))}
@@ -40,7 +40,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
 
     const getBots = async () => {
         //@ts-ignore
-        const res = await axios.get(`${process.env.APP_URL}/api/user/${user.id}`);
+        const res = await axios.get(`${process.env.APP_URL}/api/users/${user.id}`);
 
         return res.data;
     }

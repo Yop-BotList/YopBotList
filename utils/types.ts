@@ -68,18 +68,7 @@ export interface NavBarProps {
 
 export interface Props {
     user: DiscordUser;
-    bots: BotData[];
-}
-
-export interface BotData {
-    db: Bot;
-    api: ApiBot;
-}
-
-export interface ApiBot {
-    avatar: string;
-    username: string;
-    banner: string;
+    bots: Bot[];
 }
 
 export interface Bot {
@@ -94,4 +83,6 @@ export interface Bot {
     latestLikeDate: Date;
     team: string[];
     checked: boolean;
+    avatar: string;
+    username: string;
 }

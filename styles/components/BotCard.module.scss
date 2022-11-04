@@ -1,0 +1,125 @@
+.botCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .botCard {
+    margin: 1rem;
+    width: 300px;
+    background: rgb($dark-bg);
+    border-radius: 0.5rem;
+    transition: all 0.1s ease-in-out;
+    transform: translate(0, 0);
+    box-shadow: none;
+
+    &:hover {
+      background: rgb($darker-bg);
+      transform: translate(0, -0.25rem);
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+
+    .head {
+      padding: 1rem;
+      border-bottom: 1px solid rgb($dark-bg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .avatarBot {
+        width: 80%;
+        height: 80%;
+        border-radius: 10px;
+        margin: 0 auto;
+      }
+    }
+
+    .infos {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+
+      .usernameBot {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .descBot {
+        font-size: 1rem;
+        font-weight: 400;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+
+      .mainLink {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        background: rgb($light-blue);
+        color: rgb($white);
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0 0.5rem;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          background: rgb($blue);
+        }
+      }
+
+      .secondaryLinks {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5rem;
+
+        .botInvite {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 0.5rem;
+          border-radius: 0.5rem;
+          background-color: #7289da;
+          color: #fff;
+          font-size: 1rem;
+          font-weight: 600;
+          margin-right: 0.5rem;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #5f73bc;
+          }
+        }
+
+        .botSite {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 0.5rem;
+          border-radius: 0.5rem;
+          background-color: #7289da;
+          color: #fff;
+          font-size: 1rem;
+          font-weight: 600;
+          margin-left: 0.5rem;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #5f73bc;
+          }
+        }
+      }
+    }
+  }
+}
