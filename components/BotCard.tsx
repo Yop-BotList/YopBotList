@@ -1,4 +1,5 @@
 import {Bot} from "../utils/types";
+import Link from "next/link";
 
 export default function BotCard(props: { bot: Bot }) {
     return (
@@ -8,13 +9,13 @@ export default function BotCard(props: { bot: Bot }) {
             </div>
             <div className="infos">
                 <h1 className="usernameBot">{props.bot.username || "Aucun nom"}</h1>
-                <p className="descBot">{props.bot.description}</p>
+                {props.bot.description && <p className="descBot">{props.bot.description}</p>}
             </div>
             <div className="links">
-                <a href={`/bots/${props.bot.botId}`} className="mainLink">Voir</a>
+                <Link href={`/bots/${props.bot.botId}`} className="mainLink">Voir</Link>
                 <div className="secondaryLinks">
                     <a href={`https://discord.com/oauth2/authorize?client_id=${props.bot.botId}&scope=bot&permissions=-1`} target="_blank" rel="noreferrer" className="botInvite">Invite</a>
-                    {props.bot.site ? <a href={props.bot.site} target="_blank" rel="noreferrer" className="botSite">Website</a> : null}
+                    {props.bot.site && <a href={props.bot.site} target="_blank" rel="noreferrer" className="botSite">Website</a>}
                 </div>
             </div>
         </div>

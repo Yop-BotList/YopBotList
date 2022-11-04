@@ -1,0 +1,22 @@
+.searchBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: rgb($dark-bg);
+    color: rgb($white);
+
+    input {
+        flex: 1;
+        margin-right: 0.5rem;
+        padding: 0.5rem;
+        border: none;
+        border-radius: 0.5rem;
+        background-color: rgb($bg);
+        color: rgb($white);
+        outline: none;
+    }
+}

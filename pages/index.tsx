@@ -10,9 +10,13 @@ export default function Index(props: Props) {
         <div>
             <NavBar user={props.user}/>
             <div className="main">
+                <div className="headline">
+                    <h1>YopBotList</h1>
+                    <p>Tu cherches un bot pour ton serveur Discord ? Tu es au bon endroit !</p>
+                </div>
                 <div className="botCards">
                     {props.bots.map((bot) => (
-                        <BotCard bot={bot} key={bot.botId}/>
+                        bot && (<BotCard bot={bot} key={bot.botId}/>)
                     ))}
                 </div>
             </div>
@@ -26,7 +30,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
 
     const getBots = async () => {
         const res = await axios.get(`${process.env.APP_URL}/api/bots`);
-        return res.data.data;
+        return res.data.data.slice(0, 8);
     }
 
     return { props: { user: user, bots: await getBots() } };

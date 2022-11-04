@@ -1,17 +1,16 @@
 .addBotPopup {
-  position: absolute;
-  scale: 1;
+  position: fixed;
+  display: block;
   border-radius: 0;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  transition: all 0.2s ease-in-out;
+  z-index: 200;
 
   &:not(.show) {
-    scale: 0;
-    border-radius: 50px;
+    display: none;
   }
 
   .content {

@@ -2,6 +2,8 @@
   background: rgb($dark-bg);
   display: flex;
   padding: 1rem;
+  border-bottom: 1px solid rgb($darker-bg);
+
 
   .logo {
     height: 50px;
@@ -100,14 +102,18 @@
         left: 0;
         right: 0;
         transition: scale 0.2s ease-in-out;
+        z-index: 100;
+        pointer-events: none;
 
         &.show {
           display: flex;
           scale: 1;
+          pointer-events: all;
         }
 
         a, div {
           position: relative;
+          cursor: pointer;
 
           p {
             margin: auto 5px;
