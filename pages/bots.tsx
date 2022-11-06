@@ -4,22 +4,18 @@ import { parseUser } from "../utils/parse-user";
 import NavBar from "../components/NavBar";
 import BotCard from "../components/BotCard";
 import axios from "axios";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
 export default function bots(props: Props) {
-    let bots = props.bots;
+    const [name, setName] = useState("");
 
-    //useEffect(() => {
-    //         const input = document.getElementById("search") as HTMLInputElement;
-    //
-    //         input.addEventListener("input", (e) => {
-    //             const value = (e.target as HTMLInputElement).value;
-    //             if (value) {
-    //                 const filtered = bots.filter((bot) => bot.username.toLowerCase().includes(value.toLowerCase()));
-    //                 console.log(filtered);
-    //             }
-    //         });
-    //     }, []);
+    useEffect(() => {
+        const searchBar = document.getElementById("search") as HTMLInputElement;
+
+        searchBar.addEventListener("keyup", (e) => {
+            setName(searchBar.value);
+        });
+    }, [name]);
 
     return (
         <div>
@@ -29,7 +25,9 @@ export default function bots(props: Props) {
                     <input type="text" placeholder="Rechercher un bot" id="search" />
                 </div>
                 <div className="botCards">
-                    {bots.map((bot) => (
+                    {props.bots
+                    .filter(bot => bot.username && bot.username.toLowerCase().includes(name.toLowerCase()))
+                    .map((bot) => (
                         bot && <BotCard bot={bot} key={bot.botId}/>
                     ))}
                 </div>
