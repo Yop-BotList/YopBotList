@@ -38,18 +38,27 @@
 
         .botCard {
             width: 300px;
-            height: 300px;
+            height: auto;
+            max-height: 400px;
             margin: 1rem;
             border-radius: 0.5rem;
-            background: rgb($darker-bg);
+            background: rgb($bg);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             transition: all 0.2s ease-in-out;
+            padding: 1rem;
 
             &:hover {
                 transform: scale(1.05);
+            }
+
+            .avatar {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                margin: 0 auto;
             }
 
             .botName {
@@ -68,19 +77,17 @@
                 align-items: center;
                 margin-top: 1rem;
 
-                .botPrefix {
+                .botPrefix, .botVotes, .botLink {
                     font-size: 1rem;
                     margin: 0 0.5rem;
-                }
+                    background: rgb($darker-bg);
+                    padding: 0.25rem 0.5rem;
+                    border-radius: 0.25rem;
+                    transition: all 0.1s ease-in-out;
 
-                .botVotes {
-                    font-size: 1rem;
-                    margin: 0 0.5rem;
-                }
-
-                .botLink {
-                    font-size: 1rem;
-                    margin: 0 0.5rem;
+                    &:hover {
+                        background: rgb($blue);
+                    }
                 }
             }
         }
