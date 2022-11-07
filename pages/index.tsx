@@ -16,7 +16,7 @@ export default function Index(props: Props) {
                 </div>
                 <div className="botCards">
                     {props.bots.map((bot) => (
-                        bot && (<BotCard bot={bot} key={bot.botId}/>)
+                        bot && (<BotCard bot={bot} popular={1} key={bot.botId}/>)
                     ))}
                 </div>
             </div>
