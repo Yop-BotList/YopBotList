@@ -1,17 +1,17 @@
 .searchBar {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
     padding: 0.5rem;
     border-radius: 0.5rem;
-    background-color: rgb($dark-bg);
     color: rgb($white);
 
     input {
         flex: 1;
-        margin-right: 0.5rem;
+        margin: 0.25rem 0.5rem;
         padding: 0.5rem;
         border: none;
         border-radius: 0.5rem;
@@ -19,30 +19,65 @@
         color: rgb($white);
         outline: none;
     }
-}
 
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    padding: 1rem;
-    background-color: rgb($dark-bg);
-    color: rgb($white);
-
-    .bot {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
+    #search2 {
+        flex: 0;
         padding: 0.5rem;
+        border: none;
         border-radius: 0.5rem;
         background-color: rgb($bg);
         color: rgb($white);
-        margin-bottom: 0.5rem;
+        outline: none;
+    }
+
+    select {
+        flex: 0;
+        padding: 0.5rem;
+        border: none;
+        border-radius: 0.5rem;
+        background-color: rgb($bg);
+        color: rgb($white);
+        outline: none;
+        margin: 0.25rem 0.5rem;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover {
+            outline: none;
+        }
+
+        option {
+            background-color: rgb($bg);
+            color: rgb($white);
+
+            &:hover {
+                background-color: rgb($blue);
+            }
+
+            &:focus {
+                background-color: rgb($blue);
+            }
+
+            &:active {
+                background-color: rgb($blue);
+            }
+        }
+    }
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    color: rgb($white);
+
+    .bot {
+        width: 100%;
+        color: rgb($white);
 
         .header {
             display: flex;
@@ -51,8 +86,8 @@
             width: 100%;
             padding: 0.5rem;
             border-radius: 0.5rem;
-            background-color: rgb($dark-bg);
             color: rgb($white);
+            background-color: rgb($bg);
             margin-bottom: 0.5rem;
 
             .botInfo {
@@ -63,6 +98,7 @@
                 width: 100%;
                 padding: 0.5rem;
                 border-radius: 0.5rem;
+                background-color: rgb($bg);
                 color: rgb($white);
                 margin-bottom: 0.5rem;
 
@@ -87,13 +123,13 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                align-items: flex-start;
                 margin-left: 0.5rem;
 
                 .links {
                     display: flex;
+                    flex-wrap: wrap;
                     flex-direction: row;
-                    justify-content: flex-start;
+                    justify-content: center;
                     align-items: center;
                     margin-top: 0.5rem;
 
@@ -101,7 +137,7 @@
                         margin-right: 0.5rem;
                         padding: 0.25rem 0.5rem;
                         border-radius: 0.5rem;
-                        background-color: rgb($bg);
+                        background: rgb($darker-bg);
                         color: rgb($white);
                         text-decoration: none;
                         font-size: 1rem;
@@ -124,9 +160,7 @@
             width: 100%;
             padding: 0.5rem;
             border-radius: 0.5rem;
-            background-color: rgb($dark-bg);
             color: rgb($white);
-            margin-bottom: 0.5rem;
 
             .stat {
                 display: flex;
@@ -138,7 +172,7 @@
                 border-radius: 0.5rem;
                 background-color: rgb($bg);
                 color: rgb($white);
-                margin: 0 0.5rem;
+                margin: 0.5rem;
                 min-height: 10rem;
 
                 & > h1 {
@@ -147,7 +181,7 @@
                 }
 
                 & > p {
-                    font-size: 1rem;
+                    font-size: 1.25rem;
                     font-weight: 300;
                 }
 
@@ -158,15 +192,15 @@
                     align-items: center;
                     width: auto;
                     padding: 0 0.5rem;
-                    border-radius: 0.5rem;
-                    background-color: rgb($dark-bg);
+                    border-radius: 100px;
+                    background-color: rgb($darker-bg);
                     color: rgb($white);
                     margin: 0.5rem 0;
                     transition: all 0.1s ease-in-out;
 
                     & > img {
-                        width: 1.5rem;
-                        height: 1.5rem;
+                        width: 2rem;
+                        height: 2rem;
                         border-radius: 50%;
                     }
 
@@ -181,6 +215,158 @@
                     }
                 }
             }
+        }
+    }
+}
+
+.voteCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: rgb($white);
+
+    .botCardHeader {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 0.5rem;
+        background-color: rgb($dark-bg);
+        color: rgb($white);
+
+        .botAvatar {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 5rem;
+            height: 5rem;
+            padding: 0.5rem;
+            border-radius: 50%;
+            color: rgb($white);
+            margin-right: 0.5rem;
+        }
+
+        .botInfo {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 0.5rem;
+            color: rgb($white);
+
+            .botName {
+                margin: 0;
+                font-size: 1.5rem;
+                font-weight: 500;
+            }
+
+            .botStats {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                margin-left: 0.5rem;
+
+                .botStat {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    padding: 0.5rem;
+                    border-radius: 0.5rem;
+                    color: rgb($white);
+                    margin: 0.5rem 0;
+                    background-color: rgb($bg);
+
+                    .botStatNumber {
+                        margin: 0 0.25rem;
+                        font-size: 1rem;
+                        font-weight: 500;
+                    }
+
+                    .botStatName {
+                        margin: 0 0.25rem;
+                        font-size: 1rem;
+                        font-weight: 300;
+                    }
+                }
+            }
+
+            .botButtons {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                padding: 0.5rem;
+                border-radius: 0.5rem;
+                color: rgb($white);
+
+                .auth {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    padding: 0.5rem;
+                    border-radius: 0.5rem;
+                    color: rgb($white);
+                    background-color: rgb($bg);
+
+                    .botButton {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100%;
+                        padding: 0.5rem;
+                        border-radius: 0.5rem;
+                        color: rgb($white);
+                        background-color: rgb($darker-bg);
+                        transition: all 0.1s ease-in-out;
+                    }
+                }
+
+                .botButton {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    padding: 0.5rem;
+                    border-radius: 0.5rem;
+                    background-color: rgb($darker-bg);
+                    color: rgb($white);
+                    margin: 0.5rem;
+                    transition: all 0.2s ease-in-out;
+                    outline: none;
+                    border: none;
+                    cursor: pointer;
+                    height: 2rem;
+
+                    &:disabled {
+                        cursor: not-allowed;
+                    }
+
+                    &:not(:disabled):hover {
+                        background-color: rgb($blue);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .bot {
+        .stats {
+            flex-wrap: wrap;
         }
     }
 }

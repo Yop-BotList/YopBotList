@@ -6,6 +6,7 @@ $blue: 88 101 242;
 $light-blue: 100 110 255;
 $main: 242 172 52;
 $light-main: 255 184 64;
+$cool-bg: linear-gradient(45deg, rgba(242,172,52,1) 40%, rgba(88,101,242,1) 100%);
 
 html,
 body {
@@ -29,8 +30,8 @@ html {
 }
 
 body {
-  background-color: rgb($bg);
   color: rgb($white);
+  background: rgb($dark-bg);
 }
 
 ::-webkit-scrollbar {

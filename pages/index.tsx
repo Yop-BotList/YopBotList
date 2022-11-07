@@ -30,7 +30,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
 
     const getBots = async () => {
         const res = await axios.get(`${process.env.APP_URL}/api/bots`);
-        return res.data.data.slice(0, 8);
+        return res.data.data.sort((a: Bot, b: Bot) => b.likes - a.likes).slice(0, 6);
     }
 
     return { props: { user: user, bots: await getBots() } };

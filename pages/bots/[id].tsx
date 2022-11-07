@@ -4,6 +4,15 @@ import Navbar from "../../components/NavBar";
 import axios from "axios";
 
 export default function bot(props: { user: DiscordUser, bot: Bot, team: DiscordUser[], owner: DiscordUser[] }) {
+    const update = async () => {
+        const res = await axios.post(`/api/bots/${props.bot.botId}/update`, {
+            userId: props.user.id
+        });
+
+        if (res.status === 200) {
+            window.location.reload();
+        }
+    }
     return (
         <>
             <Navbar user={props.user} />

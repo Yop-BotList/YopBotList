@@ -6,7 +6,7 @@
   .botCard {
     margin: 1rem;
     width: 300px;
-    background: rgb($dark-bg);
+    background: rgb($darker-bg);
     border-radius: 0.5rem;
     transition: all 0.1s ease-in-out;
     transform: translate(0, 0);
@@ -24,6 +24,23 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-direction: column;
+
+      .popular {
+        background: rgb($main);
+        color: rgb($white);
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          background: rgba(242 172 52 / 80%);
+        }
+      }
 
       .avatarBot {
         width: 80%;

@@ -8,12 +8,24 @@ import {useEffect, useState} from "react";
 
 export default function bots(props: Props) {
     const [name, setName] = useState("");
+    const [prefix, setPrefix] = useState("");
+    const [tags, setTags] = useState("");
 
     useEffect(() => {
-        const searchBar = document.getElementById("search") as HTMLInputElement;
+        const searchName = document.getElementById("search1") as HTMLInputElement;
+        const searchPrefix = document.getElementById("search2") as HTMLInputElement;
+        const searchTags = document.getElementById("tags") as HTMLSelectElement;
 
-        searchBar.addEventListener("keyup", (e) => {
-            setName(searchBar.value);
+        searchName.addEventListener("keyup", (e) => {
+            setName(searchName.value);
+        });
+
+        searchPrefix.addEventListener("keyup", (e) => {
+            setPrefix(searchPrefix.value);
+        });
+
+        searchTags.addEventListener("change", (e) => {
+            setTags(searchTags.value);
         });
     }, [name]);
 
@@ -22,13 +34,25 @@ export default function bots(props: Props) {
             <NavBar user={props.user}/>
             <div className="main">
                 <div className="searchBar">
-                    <input type="text" placeholder="Rechercher un bot" id="search" />
+                    <input type="text" placeholder="Rechercher un bot" id="search1" />
+                    <input type="text" placeholder="Rechercher par prefix" id="search2" />
+                    <select name="tags" id="tags" placeholder="Rechercher par tag">
+                        <option value="0">Tous les tags</option>
+                        <option value="1">Musique</option>
+                        <option value="2">Modération</option>
+                        <option value="3">Fun</option>
+                        <option value="4">NSFW</option>
+                        <option value="5">Economie</option>
+                        <option value="6">Autre</option>
+                    </select>
                 </div>
                 <div className="botCards">
                     {props.bots
+                    .sort((a: Bot, b: Bot) => b.likes - a.likes)
                     .filter(bot => bot.username && bot.username.toLowerCase().includes(name.toLowerCase()))
-                    .map((bot) => (
-                        bot && <BotCard bot={bot} key={bot.botId}/>
+                    .filter(bot => bot.prefix && bot.prefix.toLowerCase().includes(prefix.toLowerCase()))
+                    .map((bot, index) => (
+                        bot && <BotCard bot={bot} popular={index} key={bot.botId}/>
                     ))}
                 </div>
             </div>

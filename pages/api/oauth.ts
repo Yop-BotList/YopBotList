@@ -66,5 +66,15 @@ export default async function handler(
     path: "/"
   }));
 
+  const redirectRoute = req.query.route as string;
+
+  if (redirectRoute) {
+    const route = redirectRoute.split("-");
+
+    if (route[0] === "vote") return res.redirect(`/bots/${route[1]}/vote`);
+
+    return res.redirect("/");
+  }
+
   res.redirect("/");
 }

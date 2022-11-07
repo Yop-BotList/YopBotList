@@ -1,11 +1,12 @@
 import {Bot} from "../utils/types";
 import Link from "next/link";
 
-export default function BotCard(props: { bot: Bot }) {
+export default function BotCard(props: { bot: Bot, popular: number }) {
     return (
         <div className="botCard">
             <div className="head">
-                <img src={props.bot.avatar || "https://cdn.discordapp.com/embed/avatars/0.png"} alt="Avatar" className="avatarBot" />
+                {props.popular === 0 && <div className="popular">Le plus voté</div>}
+                <img src={props.bot.avatar || "https://cdn.discordapp.com/embed/avatars/0.png"} alt="Avatar" className="avatarBot" draggable={false}/>
             </div>
             <div className="infos">
                 <h1 className="usernameBot">{props.bot.username || "Aucun nom"}</h1>
