@@ -64,6 +64,7 @@ export interface User {
 
 export interface NavBarProps {
     user: DiscordUser;
+    redirectRoute?: string;
 }
 
 export interface Props {
@@ -85,4 +86,7 @@ export interface Bot {
     checked: boolean;
     avatar: string;
     username: string;
+    serverCount: number;
+    userCount: number;
+    shardCount: number;
 }

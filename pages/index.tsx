@@ -8,7 +8,7 @@ import axios from "axios";
 export default function Index(props: Props) {
     return (
         <div>
-            <NavBar user={props.user}/>
+            <NavBar user={props.user} redirectRoute={"/"} />
             <div className="main">
                 <div className="headline">
                     <h1>YopBotList</h1>

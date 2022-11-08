@@ -7,7 +7,7 @@ import { Bot, DiscordUser } from "../../../utils/types";
 export default function Index(props: { user: DiscordUser, bot: Bot }) {
     return (
         <div>
-            <NavBar user={props.user}/>
+            <NavBar user={props.user} redirectRoute={`/bots-${props.bot.botId}-edit`}/>
             <div className="main">
                 <div className="botCards">
                 </div>

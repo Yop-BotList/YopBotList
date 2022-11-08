@@ -15,7 +15,7 @@ export default function bot(props: { user: DiscordUser, bot: Bot, team: DiscordU
     }
     return (
         <>
-            <Navbar user={props.user} />
+            <Navbar user={props.user} redirectRoute={`/bots-${props.bot.botId}`} />
             <div className="container">
                 <div className="bot">
                     <div className="header">
@@ -37,15 +37,15 @@ export default function bot(props: { user: DiscordUser, bot: Bot, team: DiscordU
                         </div>
                     </div>
                     <div className="stats">
-                        {0 !== 0 && <div className="stat">
+                        {props.bot.serverCount && props.bot.serverCount !== 0 && <div className="stat">
                             <h1>{0}</h1>
                             <p>Serveurs</p>
                         </div>}
-                        {0 !== 0 && <div className="stat">
+                        {props.bot.userCount && props.bot.userCount !== 0 && <div className="stat">
                             <h1>{0}</h1>
                             <p>Utilisateurs</p>
                         </div>}
-                        {0 !== 0 && <div className="stat">
+                        {props.bot.shardCount && props.bot.shardCount !== 0 && <div className="stat">
                             <h1>{0}</h1>
                             <p>Shards</p>
                         </div>}

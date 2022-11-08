@@ -17,7 +17,7 @@ export default function Index(props: { user: DiscordUser, bot: Bot, botUser: Dis
 
     return (
         <div>
-            <NavBar user={props.user}/>
+            <NavBar user={props.user} redirectRoute={`/bots-${props.bot.botId}-vote`}/>
             <div className="main">
                 <div className="voteCard">
                     <div className="botCardHeader">
@@ -35,9 +35,9 @@ export default function Index(props: { user: DiscordUser, bot: Bot, botUser: Dis
                             <div className="botButtons">
                                 {!props.user ? <div className="auth">
                                     <p>Vous devez être connecté pour voter</p>
-                                    <a href={`/api/oauth?route=vote-${props.bot.botId}`} className="botButton">Se connecter</a>
+                                    <a href={`/api/oauth/bots-${props.bot.botId}-vote`} className="botButton">Se connecter</a>
                                 </div> : null}
-                                {(props.bot.ownerId === props.user?.id || props.bot.team.includes(props.user?.id)) ? <a href={`/bots/${props.bot.botId}/edit`} className="botButton">Edit</a> : null}
+                                {props.user && (props.bot.ownerId === props.user.id || props.bot.team.includes(props.user.id)) && <a href={`/bots/${props.bot.botId}/edit`} className="botButton">Edit</a>}
 
                                 <button className="botButton" onClick={vote} disabled={(!props.user ? true : false)}>Voter</button>
                             </div>
@@ -62,7 +62,7 @@ export const getServerSideProps: GetServerSideProps<{ user: DiscordUser, bot: Bo
 
     const redirectBot = {
         redirect: {
-            destination: `/bots/${ctx.query.id}`,
+            destination: `/bots`,
             permanent: false
         }
     }

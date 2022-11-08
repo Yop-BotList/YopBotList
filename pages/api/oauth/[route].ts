@@ -2,25 +2,26 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 import { serialize } from 'cookie';
 import { sign } from 'jsonwebtoken';
-import {DiscordUser} from "../../utils/types";
-
-const scope = ["identify"].join(" ");
-const REDIRECT_URI = `${process.env.APP_URL}/api/oauth`
-
-const OAUTH_PARAMS = new URLSearchParams({
-  client_id: `${process.env.CLIENT_ID}`,
-  redirect_uri: REDIRECT_URI,
-  response_type: "code",
-  scope,
-}).toString();
-
-const OAuthURL = `https://discord.com/api/oauth2/authorize?${OAUTH_PARAMS}`;
+import {DiscordUser} from "../../../utils/types";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   if (req.method !== "GET") return res.redirect("/");
+
+  const scope = ["identify"].join(" ");
+  const rediRoute = req.query.route as string
+  const REDIRECT_URI = `${process.env.APP_URL}/api/oauth`;
+
+  const OAUTH_PARAMS = new URLSearchParams({
+    client_id: `${process.env.CLIENT_ID}`,
+    redirect_uri: REDIRECT_URI,
+    response_type: "code",
+    scope,
+  }).toString();
+
+const OAuthURL = `https://discord.com/api/oauth2/authorize?${OAUTH_PARAMS}`;
 
   const { code = null, error = null } = req.query;
 
@@ -59,6 +60,12 @@ export default async function handler(
     sameSite: "lax",
     path: "/"
   }));
+
+  if (rediRoute) {
+    const route = rediRoute.replace("-", "/");
+
+    return res.redirect(`${route}`);
+  }
 
   res.redirect("/");
 }

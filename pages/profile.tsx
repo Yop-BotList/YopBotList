@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function profile(props: { user: DiscordUser, bots: Bot[], botUsers: DiscordUser[] }) {
     return (
         <div>
-            <NavBar user={props.user}/>
+            <NavBar user={props.user} redirectRoute={"/profile"}/>
             <div className="main">
                 <div className="profileSection">
                     {props.user.banner ? <img src={`https://cdn.discordapp.com/banners/${props.user.id}/${props.user.banner}.png?size=1024`} alt="banner" className="banner" /> : null}
@@ -38,6 +38,13 @@ export default function profile(props: { user: DiscordUser, bots: Bot[], botUser
 // @ts-ignore
 export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
     const user = parseUser(ctx);
+
+    if (!user) return {
+        redirect: {
+            destination: "/api/oauth/profile",
+            permanent: false
+        }
+    };
 
     const getBots = async () => {
         const res = await axios.get(`${process.env.APP_URL}/api/users/${user!.id}`);

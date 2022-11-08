@@ -53,7 +53,7 @@ export default function NavBar(props: NavBarProps) {
 
                 ) : (
                     <div>
-                        <a className="loginBtn" href="/api/oauth">Login</a>
+                        <a className="loginBtn" href={`/api/oauth${props.redirectRoute ? `/${props.redirectRoute}` : ""}`}>Login</a>
                     </div>
                 )}
             </div>

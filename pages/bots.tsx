@@ -31,7 +31,7 @@ export default function bots(props: Props) {
 
     return (
         <div>
-            <NavBar user={props.user}/>
+            <NavBar user={props.user} redirectRoute={"/bots"}/>
             <div className="main">
                 <div className="searchBar">
                     <input type="text" placeholder="Rechercher un bot" id="search1" />
@@ -52,7 +52,7 @@ export default function bots(props: Props) {
                     .filter(bot => bot.username && bot.username.toLowerCase().includes(name.toLowerCase()))
                     .filter(bot => bot.prefix && bot.prefix.toLowerCase().includes(prefix.toLowerCase()))
                     .map((bot, index) => (
-                        bot && <BotCard bot={bot} popular={index} key={bot.botId}/>
+                        bot && <BotCard bot={bot} popular={1} key={bot.botId}/>
                     ))}
                 </div>
             </div>
