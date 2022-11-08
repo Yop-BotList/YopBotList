@@ -16,8 +16,6 @@ export default function App({ Component, pageProps }: AppProps) {
             <div className="start">
                 <p>YopBot List - 2021</p>
             </div>
-            <div className="middle">
-            </div>
             <div className="end">
                 <p>Notre <a href="https://discord.gg/3dQeTg9Vz3" target="_blank">Discord</a></p>
             </div>
