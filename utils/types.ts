@@ -89,4 +89,6 @@ export interface Bot {
     serverCount: number;
     userCount: number;
     shardCount: number;
+    latestsStastsUpdate: Date;
+    tags: string[];
 }
