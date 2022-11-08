@@ -2,6 +2,7 @@ import { parseUser } from "../../utils/parse-user";
 import { Bot, DiscordUser } from "../../utils/types";
 import Navbar from "../../components/NavBar";
 import axios from "axios";
+import Link from "next/link";
 
 export default function bot(props: { user: DiscordUser, bot: Bot, team: DiscordUser[], owner: DiscordUser[] }) {
     const update = async () => {
@@ -29,24 +30,24 @@ export default function bot(props: { user: DiscordUser, bot: Bot, team: DiscordU
                                 {props.bot.site && <a href={props.bot.site} target="_blank" rel="noreferrer">Site web</a>}
                                 <a href={`https://discord.com/oauth2/authorize?client_id=${props.bot.botId}&scope=bot&permissions=-1`} target="_blank" rel="noreferrer">Inviter</a>
                                 {props.bot.supportInvite && <a href={props.bot.supportInvite} target="_blank" rel="noreferrer">Serveur support</a>}
-                                <a href={`/bots/${props.bot.botId}/vote`} rel="noreferrer">Voter: <span>{props.bot.likes}</span></a>
-                                <a href={`/bots/${props.bot.botId}/report`} rel="noreferrer">Signaler</a>
-                                {props.user && (props.bot.ownerId === props.user.id || props.bot.team.includes(props.user.id)) && <a href={`/bots/${props.bot.botId}/edit`} rel="noreferrer">Editer</a>}
-                                {props.user && (props.bot.ownerId === props.user.id || props.bot.team.includes(props.user.id)) && <a href={`/bots/${props.bot.botId}/delete`} rel="noreferrer">Supprimer</a>}
+                                <Link href={`/bots/${props.bot.botId}/vote`} rel="noreferrer">Voter: <span>{props.bot.likes}</span></Link>
+                                <Link href={`/bots/${props.bot.botId}/report`} rel="noreferrer">Signaler</Link>
+                                {props.user && (props.bot.ownerId === props.user.id || props.bot.team.includes(props.user.id)) && <Link href={`/bots/${props.bot.botId}/edit`} rel="noreferrer">Editer</Link>}
+                                {props.user && (props.bot.ownerId === props.user.id || props.bot.team.includes(props.user.id)) && <Link href={`/bots/${props.bot.botId}/delete`} rel="noreferrer">Supprimer</Link>}
                             </div>
                         </div>
                     </div>
                     <div className="stats">
-                        {props.bot.serverCount && props.bot.serverCount !== 0 && <div className="stat">
-                            <h1>{0}</h1>
+                        {props.bot.serverCount !== undefined && props.bot.serverCount !== 0 && <div className="stat">
+                            <h1>{props.bot.serverCount}</h1>
                             <p>Serveurs</p>
                         </div>}
-                        {props.bot.userCount && props.bot.userCount !== 0 && <div className="stat">
-                            <h1>{0}</h1>
+                        {props.bot.userCount !== undefined && props.bot.userCount !== 0 && <div className="stat">
+                            <h1>{props.bot.userCount}</h1>
                             <p>Utilisateurs</p>
                         </div>}
-                        {props.bot.shardCount && props.bot.shardCount !== 0 && <div className="stat">
-                            <h1>{0}</h1>
+                        {props.bot.shardCount !== undefined && props.bot.shardCount !== 0 && <div className="stat">
+                            <h1>{props.bot.shardCount}</h1>
                             <p>Shards</p>
                         </div>}
                         <div className="stat">

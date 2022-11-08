@@ -3,6 +3,7 @@ import axios from "axios";
 import NavBar from "../../../components/NavBar";
 import { parseUser } from "../../../utils/parse-user";
 import { Bot, DiscordUser } from "../../../utils/types";
+import Link from "next/link";
 
 export default function Index(props: { user: DiscordUser, bot: Bot, botUser: DiscordUser, appURL: string }) {
     const vote = async () => {
@@ -35,9 +36,9 @@ export default function Index(props: { user: DiscordUser, bot: Bot, botUser: Dis
                             <div className="botButtons">
                                 {!props.user ? <div className="auth">
                                     <p>Vous devez être connecté pour voter</p>
-                                    <a href={`/api/oauth/bots-${props.bot.botId}-vote`} className="botButton">Se connecter</a>
+                                    <Link href={`/api/oauth/bots-${props.bot.botId}-vote`} className="botButton">Se connecter</Link>
                                 </div> : null}
-                                {props.user && (props.bot.ownerId === props.user.id || props.bot.team.includes(props.user.id)) && <a href={`/bots/${props.bot.botId}/edit`} className="botButton">Edit</a>}
+                                {props.user && (props.bot.ownerId === props.user.id || props.bot.team.includes(props.user.id)) && <Link href={`/bots/${props.bot.botId}/edit`} className="botButton">Edit</Link>}
 
                                 <button className="botButton" onClick={vote} disabled={(!props.user ? true : false)}>Voter</button>
                             </div>

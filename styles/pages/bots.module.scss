@@ -8,7 +8,7 @@
     padding: 0.5rem;
     border-radius: 0.5rem;
     color: rgb($white);
-
+    
     input {
         flex: 1;
         margin: 0.25rem 0.5rem;
@@ -19,7 +19,7 @@
         color: rgb($white);
         outline: none;
     }
-
+    
     #search2 {
         flex: 0;
         padding: 0.5rem;
@@ -29,7 +29,7 @@
         color: rgb($white);
         outline: none;
     }
-
+    
     select {
         flex: 0;
         padding: 0.5rem;
@@ -42,27 +42,27 @@
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
-
+        
         &:focus {
             outline: none;
         }
-
+        
         &:hover {
             outline: none;
         }
-
+        
         option {
             background-color: rgb($bg);
             color: rgb($white);
-
+            
             &:hover {
                 background-color: rgb($blue);
             }
-
+            
             &:focus {
                 background-color: rgb($blue);
             }
-
+            
             &:active {
                 background-color: rgb($blue);
             }
@@ -74,11 +74,11 @@
     width: 100%;
     height: 100%;
     color: rgb($white);
-
+    
     .bot {
         width: 100%;
         color: rgb($white);
-
+        
         .header {
             display: flex;
             flex-direction: column;
@@ -89,7 +89,7 @@
             color: rgb($white);
             background-color: rgb($bg);
             margin-bottom: 0.5rem;
-
+            
             .botInfo {
                 display: flex;
                 flex-direction: column;
@@ -101,30 +101,30 @@
                 background-color: rgb($bg);
                 color: rgb($white);
                 margin-bottom: 0.5rem;
-
+                
                 img {
                     width: 100px;
                     height: 100px;
                     border-radius: 50%;
                 }
-
+                
                 h1 {
                     margin: 0;
                     font-size: 2rem;
                 }
-
+                
                 p {
                     margin: 0;
                     font-size: 1rem;
                 }
             }
-
+            
             .info {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 margin-left: 0.5rem;
-
+                
                 .links {
                     display: flex;
                     flex-wrap: wrap;
@@ -132,7 +132,7 @@
                     justify-content: center;
                     align-items: center;
                     margin-top: 0.5rem;
-
+                    
                     a {
                         margin-right: 0.5rem;
                         padding: 0.25rem 0.5rem;
@@ -143,7 +143,7 @@
                         font-size: 1rem;
                         font-weight: 300;
                         transition: all 0.2s ease-in-out;
-
+                        
                         &:hover {
                             background-color: rgb($blue);
                         }
@@ -151,7 +151,7 @@
                 }
             }
         }
-
+        
         .stats {
             display: flex;
             flex-direction: row;
@@ -161,7 +161,7 @@
             padding: 0.5rem;
             border-radius: 0.5rem;
             color: rgb($white);
-
+            
             .stat {
                 display: flex;
                 flex-direction: column;
@@ -174,17 +174,17 @@
                 color: rgb($white);
                 margin: 0.5rem;
                 min-height: 10rem;
-
+                
                 & > h1 {
                     font-size: 1.5rem;
                     font-weight: 500;
                 }
-
+                
                 & > p {
                     font-size: 1.25rem;
                     font-weight: 300;
                 }
-
+                
                 .teamMember {
                     display: flex;
                     flex-direction: row;
@@ -197,19 +197,19 @@
                     color: rgb($white);
                     margin: 0.5rem 0;
                     transition: all 0.1s ease-in-out;
-
+                    
                     & > img {
                         width: 2rem;
                         height: 2rem;
                         border-radius: 50%;
                     }
-
+                    
                     & > p {
                         margin-left: 0.5rem;
                         font-size: 1rem;
                         font-weight: 300;
                     }
-
+                    
                     &:hover {
                         background-color: rgb($blue);
                     }
@@ -226,7 +226,7 @@
     align-items: center;
     width: 100%;
     color: rgb($white);
-
+    
     .botCardHeader {
         display: flex;
         flex-direction: column;
@@ -236,7 +236,7 @@
         padding: 0.5rem;
         background-color: rgb($dark-bg);
         color: rgb($white);
-
+        
         .botAvatar {
             display: flex;
             flex-direction: column;
@@ -249,7 +249,7 @@
             color: rgb($white);
             margin-right: 0.5rem;
         }
-
+        
         .botInfo {
             display: flex;
             flex-direction: column;
@@ -258,20 +258,20 @@
             width: 100%;
             padding: 0.5rem;
             color: rgb($white);
-
+            
             .botName {
                 margin: 0;
                 font-size: 1.5rem;
                 font-weight: 500;
             }
-
+            
             .botStats {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: flex-start;
                 margin-left: 0.5rem;
-
+                
                 .botStat {
                     display: flex;
                     flex-direction: row;
@@ -283,13 +283,13 @@
                     color: rgb($white);
                     margin: 0.5rem 0;
                     background-color: rgb($bg);
-
+                    
                     .botStatNumber {
                         margin: 0 0.25rem;
                         font-size: 1rem;
                         font-weight: 500;
                     }
-
+                    
                     .botStatName {
                         margin: 0 0.25rem;
                         font-size: 1rem;
@@ -297,7 +297,7 @@
                     }
                 }
             }
-
+            
             .botButtons {
                 display: flex;
                 flex-direction: column;
@@ -307,7 +307,7 @@
                 padding: 0.5rem;
                 border-radius: 0.5rem;
                 color: rgb($white);
-
+                
                 .auth {
                     display: flex;
                     flex-direction: row;
@@ -318,7 +318,7 @@
                     border-radius: 0.5rem;
                     color: rgb($white);
                     background-color: rgb($bg);
-
+                    
                     .botButton {
                         display: flex;
                         flex-direction: row;
@@ -332,7 +332,7 @@
                         transition: all 0.1s ease-in-out;
                     }
                 }
-
+                
                 .botButton {
                     display: flex;
                     flex-direction: row;
@@ -349,13 +349,452 @@
                     border: none;
                     cursor: pointer;
                     height: 2rem;
-
+                    
                     &:disabled {
                         cursor: not-allowed;
                     }
-
+                    
                     &:not(:disabled):hover {
                         background-color: rgb($blue);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.editCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: rgb($white);
+    
+    .header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 0.5rem;
+        background-color: rgb($dark-bg);
+        color: rgb($white);
+        
+        .avatar {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 5rem;
+            height: 5rem;
+            padding: 0.5rem;
+            border-radius: 50%;
+            color: rgb($white);
+            margin-right: 0.5rem;
+        }
+        
+        .info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 0.5rem;
+            color: rgb($white);
+            
+            h1 {
+                margin: 0;
+                font-size: 1.5rem;
+                font-weight: 500;
+            }
+        }
+    }
+    
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 0.5rem;
+        color: rgb($white);
+        
+        .prefix {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 0.5rem;
+            color: rgb($white);
+            
+            label {
+                margin: 0;
+                font-size: 1rem;
+                font-weight: 300;
+            }
+            
+            input {
+                margin: 0 0.5rem;
+                padding: 0.5rem;
+                border-radius: 0.5rem;
+                background-color: rgb($bg);
+                color: rgb($white);
+                outline: none;
+                border: none;
+                transition: all 0.2s ease-in-out;
+                text-align: center;
+                
+                &:focus {
+                    background-color: rgb($darker-bg);
+                }
+            }
+        }
+        
+        .description {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 0.5rem;
+            color: rgb($white);
+            
+            h1 {
+                margin: 0;
+                font-size: 1rem;
+                font-weight: 300;
+            }
+            
+            textarea {
+                margin: 0.5rem 0;
+                padding: 0.5rem;
+                border-radius: 0.5rem;
+                background-color: rgb($bg);
+                color: rgb($white);
+                outline: none;
+                border: none;
+                transition: all 0.2s ease-in-out;
+                
+                &:focus {
+                    background-color: rgb($darker-bg);
+                }
+            }
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 0.5rem;
+            color: rgb($white);
+            
+            h1 {
+                margin: 0;
+                font-size: 1rem;
+                font-weight: 300;
+            }
+            
+            .tagsList {
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                padding: 0.5rem;
+                color: rgb($white);
+                
+                .tag {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    padding: 0.5rem;
+                    border-radius: 0.5rem;
+                    background-color: rgb($bg);
+                    color: rgb($white);
+                    margin: 0.5rem;
+                    transition: all 0.2s ease-in-out;
+                    position: relative;
+                    
+                    label {
+                        margin: 0;
+                        font-size: 1rem;
+                        font-weight: 300;
+                        display: flex;
+                        flex-direction: row;
+                        
+                        .checkmark {
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: center;
+                            align-items: center;
+                            width: 1.5rem;
+                            height: 1.5rem;
+                            border-radius: 0.5rem;
+                            background-color: rgb($dark-bg);
+                            color: rgb($white);
+                            margin: 0 0.5rem;
+                            transition: all 0.1s ease-in-out;
+                            position: relative;
+                            
+                            &:hover {
+                                background-color: rgb($darker-bg);
+                                cursor: pointer;
+                            }
+                            
+                            &:after {
+                                content: "";
+                                position: absolute;
+                                display: none;
+                            }
+                            
+                            span {
+                                display: none;
+                                position: absolute;
+                                height: 2px;
+                                width: 0.5rem;
+                                left: 0.25rem;
+                                bottom: 0.5rem;
+                                background-color: rgb($white);
+                                transform: rotate(45deg);
+                                transition: all 0.2s ease-in-out;
+                                
+                                &::before {
+                                    content: "";
+                                    position: absolute;
+                                    top: -0.42rem;
+                                    left: 0.08rem;
+                                    height: 2px;
+                                    width: 0.75rem;
+                                    background-color: rgb($white);
+                                    transform: rotate(-90deg);
+                                }
+                            }
+                        }
+                    }
+                    
+                    input {
+                        margin: 0 0.5rem;
+                        padding: 0.5rem;
+                        border-radius: 0.5rem;
+                        background-color: rgb($bg);
+                        color: rgb($white);
+                        outline: none;
+                        border: none;
+                        transition: all 0.2s ease-in-out;
+                        left: 0.5rem;
+                        top: 25%;
+                        bottom: 25%;
+                        position: absolute;
+                        opacity: 0;
+                        
+                        &:focus {
+                            background-color: rgb($darker-bg);
+                        }
+                        
+                        &:checked ~ label .checkmark {
+                            background-color: rgb($blue);
+                            
+                            span {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        .links {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 0.5rem;
+            color: rgb($white);
+            
+            h1 {
+                margin: 0;
+                font-size: 1rem;
+                font-weight: 300;
+            }
+            
+            .linksList {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                padding: 0.5rem;
+                color: rgb($white);
+                
+                .link {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    padding: 0.5rem;
+                    border-radius: 0.5rem;
+                    background-color: rgb($bg);
+                    color: rgb($white);
+                    margin: 0.5rem;
+                    transition: all 0.2s ease-in-out;
+                    
+                    label {
+                        margin: 0;
+                        font-size: 1rem;
+                        font-weight: 300;
+                    }
+                    
+                    input {
+                        margin: 0 0.5rem;
+                        padding: 0.5rem;
+                        border-radius: 0.5rem;
+                        background-color: rgb($dark-bg);
+                        color: rgb($white);
+                        outline: none;
+                        border: none;
+                        transition: all 0.2s ease-in-out;
+                        
+                        &:focus {
+                            background-color: rgb($darker-bg);
+                        }
+                    }
+                }
+            }   
+        }
+        
+        .submit {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 0.5rem;
+            color: rgb($white);
+            
+            input {
+                margin: 0 0.5rem;
+                padding: 0.5rem;
+                border-radius: 0.5rem;
+                background-color: rgb($bg);
+                color: rgb($white);
+                outline: none;
+                border: none;
+                transition: all 0.2s ease-in-out;
+                
+                &:focus {
+                    background-color: rgb($blue);
+                }
+                
+                &:hover {
+                    background-color: rgb($darker-bg);
+                }
+            }
+        }
+    }
+    
+    .editPopup {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+        scale: 0;
+        transition: all 0.2s ease-in-out;
+        
+        &.show {
+            z-index: 1000;
+            scale: 1;
+        }
+        
+        .content {
+            background-color: rgb($bg);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            width: 100%;
+            max-width: 500px;
+            height: 100%;
+            max-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: auto;
+            
+            .error {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                padding: 0.5rem;
+                color: rgb($white);
+                
+                h1 {
+                    margin: 0;
+                    font-size: 1rem;
+                    font-weight: 300;
+                }
+            }
+            
+            .success {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                padding: 0.5rem;
+                color: rgb($white);
+                
+                h1 {
+                    margin: 0;
+                    font-size: 1rem;
+                    font-weight: 300;
+                }
+            }
+            
+            .close {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                cursor: pointer;
+                
+                span {
+                    &::before,
+                    &::after {
+                        content: '';
+                        top: 50%;
+                        left: 50%;
+                        width: 30px;
+                        height: 3px;
+                        margin: 10px 0 0 -10px;
+                        background: rgb($white);
+                        position: absolute;
+                        border-radius: 3px;
+                    }
+                    
+                    &::before {
+                        transform: translate(-50%, -50%) rotate(45deg);
+                    }
+                    
+                    &::after {
+                        transform: translate(-50%, -50%) rotate(-45deg);
                     }
                 }
             }

@@ -41,9 +41,8 @@ export default function bots(props: Props) {
                         <option value="1">Musique</option>
                         <option value="2">Modération</option>
                         <option value="3">Fun</option>
-                        <option value="4">NSFW</option>
-                        <option value="5">Economie</option>
-                        <option value="6">Autre</option>
+                        <option value="4">Utilitaire</option>
+                        <option value="5">Autre</option>
                     </select>
                 </div>
                 <div className="botCards">
