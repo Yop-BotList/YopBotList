@@ -475,7 +475,7 @@
                 color: rgb($white);
                 outline: none;
                 border: none;
-                transition: all 0.2s ease-in-out;
+                transition: background-color 0.2s ease-in-out;
                 
                 &:focus {
                     background-color: rgb($darker-bg);

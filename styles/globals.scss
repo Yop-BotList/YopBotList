@@ -34,6 +34,46 @@ body {
   background: rgb($dark-bg);
 }
 
+.main {
+  margin-bottom: 5rem;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: rgb($darker-bg);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+
+  .start {
+    flex: 1;
+    text-align: left;
+    
+    p {
+      margin: 0;
+    }
+  }
+
+  .end {
+    text-align: right;
+    flex-direction: row;
+
+    p {
+      margin: 0 0.5rem;
+    }
+
+    a {
+      color: rgb($light-blue);
+
+      &:hover {
+        color: rgb($blue);
+      }
+    }
+  }
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }

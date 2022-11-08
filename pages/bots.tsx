@@ -9,7 +9,7 @@ import {useEffect, useState} from "react";
 export default function bots(props: Props) {
     const [name, setName] = useState("");
     const [prefix, setPrefix] = useState("");
-    const [tags, setTags] = useState("");
+    const [tags, setTags] = useState<string | undefined>();
 
     useEffect(() => {
         const searchName = document.getElementById("search1") as HTMLInputElement;
@@ -25,9 +25,19 @@ export default function bots(props: Props) {
         });
 
         searchTags.addEventListener("change", (e) => {
-            setTags(searchTags.value);
+            if (searchTags.value === "All") setTags(undefined);
+            else setTags(searchTags.value);
         });
     }, [name]);
+
+    const list = props.bots
+    .sort((a: Bot, b: Bot) => b.likes - a.likes)
+    .filter(bot => bot.username && bot.username.toLowerCase().includes(name.toLowerCase()))
+    .filter(bot => bot.prefix && bot.prefix.toLowerCase().includes(prefix.toLowerCase()))
+    .filter(bot => {
+        if (tags) return bot.tags.includes(tags as string);
+        else return true;
+    });
 
     return (
         <div>
@@ -37,7 +47,7 @@ export default function bots(props: Props) {
                     <input type="text" placeholder="Rechercher un bot" id="search1" />
                     <input type="text" placeholder="Rechercher par prefix" id="search2" />
                     <select name="tags" id="tags" placeholder="Rechercher par tag">
-                        <option value="0">Tous les tags</option>
+                        <option value="All">Tous les tags</option>
                         <option value="1">Musique</option>
                         <option value="2">Modération</option>
                         <option value="3">Fun</option>
@@ -46,13 +56,9 @@ export default function bots(props: Props) {
                     </select>
                 </div>
                 <div className="botCards">
-                    {props.bots
-                    .sort((a: Bot, b: Bot) => b.likes - a.likes)
-                    .filter(bot => bot.username && bot.username.toLowerCase().includes(name.toLowerCase()))
-                    .filter(bot => bot.prefix && bot.prefix.toLowerCase().includes(prefix.toLowerCase()))
-                    .map((bot, index) => (
-                        bot && <BotCard bot={bot} popular={1} key={bot.botId}/>
-                    ))}
+                    {list.length > 0 ? list.map((bot, index) => (
+                        bot && <BotCard bot={bot} popular={1} key={index}/>
+                    )) : ("Aucun bot trouvé dans la liste")}
                 </div>
             </div>
         </div>
