@@ -59,7 +59,7 @@
                     width: 100px;
                     height: 30px;
                     border-radius: 5px;
-                    background-color: rgb($bg);
+                    background-color: rgb($dark-bg);
                     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                     transition: all 0.3s ease-in-out;
                     margin-right: 10px;
@@ -139,7 +139,7 @@
                         width: 80px;
                         height: 30px;
                         border-radius: 5px;
-                        background-color: rgb($bg);
+                        background-color: rgb($dark-bg);
                         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                         transition: all 0.3s ease-in-out;
                         margin: 0;
