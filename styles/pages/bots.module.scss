@@ -711,9 +711,33 @@
                     font-weight: 300;
 
                     span {
+                        margin: 0 0.5rem;
+                        font-size: 1rem;
+                        font-weight: 300;
+                        position: relative;
+
+                        &:hover {
+                            cursor: pointer;
+
+                            .tooltip {
+                                opacity: 1;
+                            }
+                        }
 
                         .tooltip {
-                            
+                            opacity: 0;
+                            position: absolute;
+                            z-index: 1;
+                            background-color: rgb($darker-bg);
+                            color: rgb($white);
+                            padding: 0.5rem;
+                            border-radius: 0.5rem;
+                            font-size: 0.75rem;
+                            font-weight: 300;
+                            bottom: 0.5rem;
+                            left: 0;
+                            margin: 0.5rem;
+                            transition: all 0.2s ease-in-out;
                         }
                     }
                 }
