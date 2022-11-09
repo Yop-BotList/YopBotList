@@ -107,7 +107,7 @@
                     align-items: center;
                     justify-content: center;
                     width: 150px;
-                    height: 200px;
+                    max-height: 300px;
                     border-radius: 10px;
                     background-color: rgb($bg);
                     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
