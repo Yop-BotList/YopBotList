@@ -50,6 +50,17 @@ export default function Index(props: { user: DiscordUser, bot: Bot }) {
 
         return;
     }
+
+    const updateInfo = async () => {
+        const res = await axios.post(`/api/bots/${props.bot.botId}/edit/info`, {
+            userId: props.user.id,
+        });
+
+        setType(res.data.error);
+        setShow(true);
+
+        return;
+    }
     return (
         <div>
             <NavBar user={props.user} redirectRoute={`/bots-${props.bot.botId}-edit`}/>
@@ -61,6 +72,8 @@ export default function Index(props: { user: DiscordUser, bot: Bot }) {
                         <div className="info">
                             <h1>{props.bot.username}</h1>
                         </div>
+
+                        <button onClick={updateInfo} className="updateInfo">Mettre à jour l'avatar et le nom du bot</button>
                     </div>
                     <form onSubmit={updateBot}>
                         <div className="prefix">

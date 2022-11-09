@@ -7,7 +7,6 @@ export interface DiscordUser {
     flags: number;
     locale: string;
     mfa_enabled: boolean;
-    premium_type: number;
     email: string;
     verified: boolean;
     banner: string;

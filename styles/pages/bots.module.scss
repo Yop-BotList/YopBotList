@@ -409,6 +409,32 @@
                 font-weight: 500;
             }
         }
+
+        .updateInfo {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            background-color: rgb($darker-bg);
+            color: rgb($white);
+            margin: 0.5rem;
+            transition: all 0.2s ease-in-out;
+            outline: none;
+            border: none;
+            cursor: pointer;
+            height: 2rem;
+
+            &:disabled {
+                cursor: not-allowed;
+            }
+
+            &:not(:disabled):hover {
+                background-color: rgb($blue);
+            }
+        }
     }
     
     form {
@@ -561,22 +587,52 @@
                                 display: none;
                                 position: absolute;
                                 height: 2px;
-                                width: 0.5rem;
+                                width: 0;
                                 left: 0.25rem;
                                 bottom: 0.5rem;
                                 background-color: rgb($white);
                                 transform: rotate(45deg);
                                 transition: all 0.2s ease-in-out;
+                                animation-name: checkmark;
+                                animation-delay: 0.1s;
+                                animation-duration: 0.2s;
+                                animation-fill-mode: forwards;
                                 
-                                &::before {
+                                &:before {
                                     content: "";
                                     position: absolute;
-                                    top: -0.42rem;
-                                    left: 0.08rem;
+                                    bottom: 0.4rem;
                                     height: 2px;
-                                    width: 0.75rem;
+                                    width: 0;
                                     background-color: rgb($white);
                                     transform: rotate(-90deg);
+                                    transition: all 0.2s ease-in-out;
+                                    animation-name: checkmark2;
+                                    animation-delay: 0.2s;
+                                    animation-duration: 0.1s;
+                                    animation-fill-mode: forwards;
+                                    background-position: left top;
+                                }
+
+                                @keyframes checkmark {
+                                    0% {
+                                        width: 0;
+                                    }
+
+                                    100% {
+                                        width: 0.5rem;
+                                    }
+                                }
+
+                                @keyframes checkmark2 {
+                                    0% {
+                                        width: 0;
+                                    }
+
+                                    100% {
+                                        width: 0.75rem;
+                                        left: 0.04rem;
+                                    }
                                 }
                             }
                         }

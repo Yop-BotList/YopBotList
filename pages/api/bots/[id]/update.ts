@@ -20,13 +20,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (!userId) return res.status(400).json({error: "Bad request"});
 
-    // if (!bot.team.includes(userId)) {
-    //     if (bot.ownerId !== userId) {
-    //         return res.status(401).json({error: "Unauthorized"});
-    //     }
+    if (!bot.team.includes(userId)) {
+        if (bot.ownerId !== userId) return res.status(401).json({error: "Unauthorized"});
 
-    //     return res.status(401).json({error: "Unauthorized"});
-    // }
+        return res.status(401).json({error: "Unauthorized"});
+    }
 
     const fetchDiscordUser = async () => {
         const response = await axios.get(`https://discord.com/api/users/${bot.botId}`, {
