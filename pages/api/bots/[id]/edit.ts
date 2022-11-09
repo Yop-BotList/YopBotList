@@ -15,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (!bot) return res.status(200).json({error: "nobot"});
 
-    const { prefix, description, tags, links } = req.body;
+    const { prefix, description, tags, links, voteHook, hookCode } = req.body;
 
     if (!prefix) return res.status(200).json({error: "noprefix"});
     if (!description) return res.status(200).json({error: "nodescription"});
@@ -31,6 +31,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         bot.supportInvite = links.invite ?? bot.supportInvite;
         bot.site = links.website ?? bot.site;
     }
+
+    bot.voteHook = voteHook;
+    bot.hookCode = hookCode;
 
     await bot.save();
 

@@ -24,6 +24,8 @@ export default function Index(props: { user: DiscordUser, bot: Bot }) {
         const tagsList = form.tags;
         const invite = form.invite.value;
         const website = form.website.value;
+        const voteHook = form.voteHook.value;
+        const hookCode = form.hookCode.value;
 
         const tags = [];
 
@@ -38,7 +40,9 @@ export default function Index(props: { user: DiscordUser, bot: Bot }) {
             links: {
                 invite,
                 website
-            }
+            },
+            voteHook,
+            hookCode
         });
 
         setType(res.data.error);
@@ -136,26 +140,22 @@ export default function Index(props: { user: DiscordUser, bot: Bot }) {
                             <div className="vote">
                                 <label htmlFor="voteHook">
                                     URL du webhook discord,
-                                    <span>
-                                        ?
-                                        <div className="tooltip">
-                                            <a href="https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks" target="_blank">Discord Webhook</a>
-                                        </div>
-                                    </span>
+                                    <span>?</span>
+                                    <div className="tooltip">
+                                        <a href="https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks" target="_blank">Discord Webhook</a>
+                                    </div>
                                 </label>
                                 <input type="text" name="voteHook" id="voteHook" defaultValue={props.bot.voteHook}/>
                             </div>
                             <div className="vote">
-                                <label htmlFor="voteHook">
+                                <label htmlFor="hookCode">
                                     Code du webhook,
-                                    <span>
-                                        ?
-                                        <div className="tooltip">
-                                            <p>Ne pas partager, seul vous pouvez le connaitre.</p>
-                                        </div>
-                                    </span>
+                                    <span>?</span>
+                                    <div className="tooltip">
+                                        <p>Ne pas partager, seul vous pouvez le connaitre.</p>
+                                    </div>
                                 </label>
-                                <input type="text" name="voteHook" id="voteHook" defaultValue={props.bot.voteHook}/>
+                                <input type="text" name="hookCode" id="hookCode" defaultValue={props.bot.hookCode}/>
                             </div>
                         </div>
                         <div className="submit">

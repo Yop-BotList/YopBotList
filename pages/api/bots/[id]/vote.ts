@@ -19,10 +19,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const userId = req.body.userId;
 
     if (!userId) return res.status(400).json({error: "Bad request"});
-
-    bot.likes += 1;
-
-    await bot.save();
     
     const hook = process.env.VOTE_HOOK;
 
@@ -34,16 +30,24 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
     });
 
-    await axios.post(hook, {
+    const data = {
         embeds: [
             {
                 title: "Vote !",
-                description: `${user.data.username}#${user.data.discriminator} vient de voter pour ${bot.username} !\nMerci à lui !\n\n${bot.username} a maintenant ${bot.likes} votes !`,
+                description: `${user.data.username}#${user.data.discriminator} vient de voter pour ${bot.username} !\nMerci à lui !\n\n${bot.username} a maintenant ${bot.likes+1} votes !`,
                 color: 0xf2ac34,
                 url: `${process.env.APP_URL}/bots/${bot.botId}/vote`
             }
         ]
-    });
+    }
+
+    if (bot.voteHook) await axios.post(bot.voteHook, data);
+
+    await axios.post(hook, data);
+
+    bot.likes += 1;
+
+    await bot.save();
 
     res.status(200).json({success: "Successfully liked bot"});
 }
