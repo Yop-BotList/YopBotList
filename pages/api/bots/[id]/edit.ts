@@ -29,7 +29,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (links) {
         bot.supportInvite = links.invite ?? bot.supportInvite;
-        bot.website = links.website ?? bot.website;
+        bot.site = links.website ?? bot.site;
     }
 
     await bot.save();

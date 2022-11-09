@@ -91,4 +91,6 @@ export interface Bot {
     shardCount: number;
     latestsStastsUpdate: Date;
     tags: string[];
+    voteHook: string;
+    hookCode: string;
 }

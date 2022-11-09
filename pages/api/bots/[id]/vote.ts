@@ -1,6 +1,7 @@
 import {NextApiRequest, NextApiResponse} from "next";
 import dbConnect from "../../../../lib/dbConnect";
 import { bots } from "../../../../models";
+import axios from "axios";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     await dbConnect();
@@ -22,6 +23,27 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     bot.likes += 1;
 
     await bot.save();
+    
+    const hook = process.env.VOTE_HOOK;
+
+    if (!hook) return res.status(500).json({error: "Internal server error"});
+
+    const user = await axios.get(`https://discord.com/api/users/${userId}`, {
+        headers: {
+            Authorization: `Bot ${process.env.CLIENT_TOKEN}`
+        }
+    });
+
+    await axios.post(hook, {
+        embeds: [
+            {
+                title: "Vote !",
+                description: `${user.data.username}#${user.data.discriminator} vient de voter pour ${bot.username} !\nMerci à lui !\n\n${bot.username} a maintenant ${bot.likes} votes !`,
+                color: 0xf2ac34,
+                url: `${process.env.APP_URL}/bots/${bot.botId}/vote`
+            }
+        ]
+    });
 
     res.status(200).json({success: "Successfully liked bot"});
 }

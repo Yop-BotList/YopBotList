@@ -35,8 +35,10 @@ export default function Index(props: { user: DiscordUser, bot: Bot }) {
             description,
             prefix,
             tags,
-            invite,
-            website
+            links: {
+                invite,
+                website
+            }
         });
 
         setType(res.data.error);
@@ -127,6 +129,33 @@ export default function Index(props: { user: DiscordUser, bot: Bot }) {
                                     <label htmlFor="website">Site web</label>
                                     <input type="text" name="website" id="website" defaultValue={props.bot.site}/>
                                 </div>
+                            </div>
+                        </div>
+                        <div className="votes">
+                            <h1>Webhook de votes</h1>
+                            <div className="vote">
+                                <label htmlFor="voteHook">
+                                    URL du webhook discord,
+                                    <span>
+                                        ?
+                                        <div className="tooltip">
+                                            <a href="https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks" target="_blank">Discord Webhook</a>
+                                        </div>
+                                    </span>
+                                </label>
+                                <input type="text" name="voteHook" id="voteHook" defaultValue={props.bot.voteHook}/>
+                            </div>
+                            <div className="vote">
+                                <label htmlFor="voteHook">
+                                    Code du webhook,
+                                    <span>
+                                        ?
+                                        <div className="tooltip">
+                                            <p>Ne pas partager, seul vous pouvez le connaitre.</p>
+                                        </div>
+                                    </span>
+                                </label>
+                                <input type="text" name="voteHook" id="voteHook" defaultValue={props.bot.voteHook}/>
                             </div>
                         </div>
                         <div className="submit">

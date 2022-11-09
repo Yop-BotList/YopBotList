@@ -476,6 +476,8 @@
                 outline: none;
                 border: none;
                 transition: background-color 0.2s ease-in-out;
+                width: 100%;
+                resize: none;
                 
                 &:focus {
                     background-color: rgb($darker-bg);
@@ -628,6 +630,7 @@
             
             .linksList {
                 display: flex;
+                flex-wrap: wrap;
                 flex-direction: row;
                 justify-content: center;
                 align-items: center;
@@ -663,13 +666,74 @@
                         outline: none;
                         border: none;
                         transition: all 0.2s ease-in-out;
+                        width: 100%;
                         
                         &:focus {
                             background-color: rgb($darker-bg);
                         }
                     }
                 }
-            }   
+            }
+        }
+        
+        .votes {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 0.5rem;
+            color: rgb($white);
+            
+            h1 {
+                margin: 0;
+                font-size: 1rem;
+                font-weight: 300;
+            }
+            
+            .vote {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                padding: 0.5rem;
+                border-radius: 0.5rem;
+                background-color: rgb($bg);
+                color: rgb($white);
+                margin: 0.5rem;
+                transition: all 0.2s ease-in-out;
+                
+                label {
+                    margin: 0;
+                    font-size: 1rem;
+                    font-weight: 300;
+
+                    span {
+
+                        .tooltip {
+                            
+                        }
+                    }
+                }
+                
+                input {
+                    margin: 0 0.5rem;
+                    padding: 0.5rem;
+                    border-radius: 0.5rem;
+                    background-color: rgb($dark-bg);
+                    color: rgb($white);
+                    outline: none;
+                    border: none;
+                    transition: all 0.2s ease-in-out;
+                    width: 100%;
+                    
+                    &:focus {
+                        background-color: rgb($darker-bg);
+                    }
+                }
+            }
         }
         
         .submit {
