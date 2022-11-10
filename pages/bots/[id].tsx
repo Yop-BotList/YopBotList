@@ -14,6 +14,18 @@ export default function bot(props: { user: DiscordUser, bot: Bot, team: DiscordU
             window.location.reload();
         }
     }
+
+    const signaler = async () => {
+        // const res = await axios.post(`/api/bots/${props.bot.botId}/signaler`, {
+        //     userId: props.user.id
+        // });
+
+        // if (res.status === 200) {
+        //     window.location.reload();
+        // }
+
+        alert("Cette fonctionnalité n'est pas encore disponible.");
+    }
     return (
         <>
             <Navbar user={props.user} redirectRoute={`/bots-${props.bot.botId}`} />
@@ -31,9 +43,9 @@ export default function bot(props: { user: DiscordUser, bot: Bot, team: DiscordU
                                 <a href={`https://discord.com/oauth2/authorize?client_id=${props.bot.botId}&scope=bot&permissions=-1`} target="_blank" rel="noreferrer">Inviter</a>
                                 {props.bot.supportInvite && <a href={props.bot.supportInvite} target="_blank" rel="noreferrer">Serveur support</a>}
                                 <Link href={`/bots/${props.bot.botId}/vote`} rel="noreferrer">Voter: <span>{props.bot.likes}</span></Link>
-                                <Link href={`/bots/${props.bot.botId}/report`} rel="noreferrer">Signaler</Link>
+                                {props.user && <button onClick={signaler}>Signaler</button>}
                                 {props.user && (props.bot.ownerId === props.user.id || props.bot.team.includes(props.user.id)) && <Link href={`/bots/${props.bot.botId}/edit`} rel="noreferrer">Editer</Link>}
-                                {props.user && (props.bot.ownerId === props.user.id || props.bot.team.includes(props.user.id)) && <Link href={`/bots/${props.bot.botId}/delete`} rel="noreferrer">Supprimer</Link>}
+                                {props.user && (props.bot.ownerId === props.user.id || props.bot.team.includes(props.user.id)) && <button onClick={signaler}>Supprimer</button>}
                             </div>
                         </div>
                     </div>

@@ -133,7 +133,7 @@
                     align-items: center;
                     margin-top: 0.5rem;
                     
-                    a {
+                    a, button {
                         margin-right: 0.5rem;
                         padding: 0.25rem 0.5rem;
                         border-radius: 0.5rem;
@@ -143,6 +143,9 @@
                         font-size: 1rem;
                         font-weight: 300;
                         transition: all 0.2s ease-in-out;
+                        outline: none;
+                        border: none;
+                        cursor: pointer;
                         
                         &:hover {
                             background-color: rgb($blue);

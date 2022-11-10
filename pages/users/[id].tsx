@@ -23,8 +23,8 @@ export default function bot(props: { user: DiscordUser, userData: DiscordUser, b
                         <h1>Robots de {props.userData.username}#{props.userData.discriminator}</h1>
 
                         <div className="bots">
-                            {props.bots.map(bot => (
-                                <div className="bot">
+                            {props.bots.map((bot, index) => (
+                                <div className="bot" key={index}>
                                     <img src={bot.avatar} alt="Avatar" className="avatar" />
                                     <h1>{bot.username}</h1>
                                     <p>{bot.description}</p>
