@@ -1,6 +1,6 @@
 import {NextApiRequest, NextApiResponse} from "next";
 import dbConnect from "../../../../lib/dbConnect";
-import { bots } from "../../../../models";
+import { bots, users } from "../../../../models";
 import axios from "axios";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -48,6 +48,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     bot.likes += 1;
 
     await bot.save();
+
+    const userDoc = await users.findOne({userId: userId});
+
+    if (!userDoc) return res.status(404).json({error: "User not found"});
+
+    userDoc.lastVoteDate = Date.now();
+
+    await userDoc.save();
 
     res.status(200).json({success: "Successfully liked bot"});
 }

@@ -93,3 +93,34 @@ export interface Bot {
     voteHook: string;
     hookCode: string;
 }
+
+export interface DBUser {
+    userId: string;
+    avis: string;
+    cmdbl: boolean;
+    ticketsbl: boolean;
+    warns: Warn[];
+    totalNumbers: number;
+    readFaq: boolean;
+    locale: string;
+    lastVoteDate: number;
+}
+
+export interface Warn {
+    id: number;
+    userId: string;
+    modId: string;
+    type: string;
+    reason: string;
+    duration: number;
+    finishOn: number;
+    date: number;
+    deleted: boolean;
+    historyLogs: HistoryLog[];
+}
+
+export interface HistoryLog {
+    title: string;
+    mod: string;
+    date: number;
+}

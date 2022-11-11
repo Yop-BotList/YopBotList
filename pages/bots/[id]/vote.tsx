@@ -2,10 +2,10 @@ import { GetServerSideProps } from "next";
 import axios from "axios";
 import NavBar from "../../../components/NavBar";
 import { parseUser } from "../../../utils/parse-user";
-import { Bot, DiscordUser } from "../../../utils/types";
+import { Bot, DBUser, DiscordUser } from "../../../utils/types";
 import Link from "next/link";
 
-export default function Index(props: { user: DiscordUser, bot: Bot, botUser: DiscordUser, appURL: string }) {
+export default function Index(props: { user: DiscordUser, bot: Bot, botUser: DiscordUser, appURL: string, voted: DBUser | null }) {
     const vote = async () => {
         const res = await axios.post(`/api/bots/${props.bot.botId}/vote`, {
             userId: props.user.id
@@ -40,7 +40,13 @@ export default function Index(props: { user: DiscordUser, bot: Bot, botUser: Dis
                                 </div> : null}
                                 {props.user && (props.bot.ownerId === props.user.id || props.bot.team.includes(props.user.id)) && <Link href={`/bots/${props.bot.botId}/edit`} className="botButton">Edit</Link>}
 
-                                <button className="botButton" onClick={vote} disabled={(!props.user ? true : false)}>Voter</button>
+                                {props.user &&
+                                props.voted !== null && (props.voted.lastVoteDate + 7200000) > Date.now() && <div className="auth">
+                                    <p>Vous avez déjà voté il y a moins de 2 heures</p>
+                                </div>}
+
+                                <button className="botButton" onClick={vote} disabled={(!props.user ? true : false) ||
+                                props.voted !== null && (props.voted.lastVoteDate + 7200000) > Date.now()}>Vote</button>
                             </div>
                         </div>
                     </div>
@@ -80,7 +86,15 @@ export const getServerSideProps: GetServerSideProps<{ user: DiscordUser, bot: Bo
         return res.data;
     }
 
+    const voteUser = async () => {
+        if (!user) return null;
+
+        const res = await axios.get(`${process.env.APP_URL}/api/users/${user.id}/voted`);
+
+        return res.data;
+    }
     const botUser = await botToUser(bot);
 
-    return { props: { user, bot, botUser, appURL: `${process.env.APP_URL}/bots/${ctx.query.id}` } };
+
+    return { props: { user, bot, botUser, appURL: `${process.env.APP_URL}/bots/${ctx.query.id}`, voted: await voteUser() } };
 }
