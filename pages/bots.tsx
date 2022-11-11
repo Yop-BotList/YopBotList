@@ -5,6 +5,7 @@ import NavBar from "../components/NavBar";
 import BotCard from "../components/BotCard";
 import axios from "axios";
 import {useEffect, useState} from "react";
+import Head from "next/head";
 
 export default function bots(props: Props) {
     const [name, setName] = useState("");
@@ -41,6 +42,13 @@ export default function bots(props: Props) {
 
     return (
         <div>
+            <Head>
+                <meta property="og:title" content={`YopBot List | Bots`} />
+                <meta property="og:description" content={"YopBot List est une liste de bots discord qui vous permet de trouver des bots discord de qualité."} />
+                <meta property="og:image" content="https://cdn.discordapp.com/icons/782644006190055486/abebf32ccdda97f12f9d4aaaa0e064fc.webp" />
+                <meta property="og:url" content={`https://www.yopbotlist.me/bots`} />
+                <meta property="og:type" content="website" />
+            </Head>
             <NavBar user={props.user} redirectRoute={"/bots"}/>
             <div className="main">
                 <div className="searchBar">

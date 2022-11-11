@@ -4,6 +4,7 @@ import NavBar from "../../../components/NavBar";
 import { parseUser } from "../../../utils/parse-user";
 import { Bot, DBUser, DiscordUser } from "../../../utils/types";
 import Link from "next/link";
+import Head from "next/head";
 
 export default function Index(props: { user: DiscordUser, bot: Bot, botUser: DiscordUser, appURL: string, voted: DBUser | null }) {
     const vote = async () => {
@@ -18,6 +19,13 @@ export default function Index(props: { user: DiscordUser, bot: Bot, botUser: Dis
 
     return (
         <div>
+            <Head>
+                <meta property="og:title" content={`${props.bot.username} | Votes`} />
+                <meta property="og:description" content={props.bot.description || "YopBot List est une liste de bots discord qui vous permet de trouver des bots discord de qualité."} />
+                <meta property="og:image" content={props.bot.avatar} />
+                <meta property="og:url" content={`https://www.yopbotlist.me/bots/${props.bot.botId}/vote`} />
+                <meta property="og:type" content="website" />
+            </Head>
             <NavBar user={props.user} redirectRoute={`/bots-${props.bot.botId}-vote`}/>
             <div className="main">
                 <div className="voteCard">
@@ -38,7 +46,6 @@ export default function Index(props: { user: DiscordUser, bot: Bot, botUser: Dis
                                     <p>Vous devez être connecté pour voter</p>
                                     <Link href={`/api/oauth/bots-${props.bot.botId}-vote`} className="botButton">Se connecter</Link>
                                 </div> : null}
-                                {props.user && (props.bot.ownerId === props.user.id || props.bot.team.includes(props.user.id)) && <Link href={`/bots/${props.bot.botId}/edit`} className="botButton">Edit</Link>}
 
                                 {props.user &&
                                 props.voted !== null && (props.voted.lastVoteDate + 7200000) > Date.now() && <div className="auth">
@@ -46,7 +53,7 @@ export default function Index(props: { user: DiscordUser, bot: Bot, botUser: Dis
                                 </div>}
 
                                 <button className="botButton" onClick={vote} disabled={(!props.user ? true : false) ||
-                                props.voted !== null && (props.voted.lastVoteDate + 7200000) > Date.now()}>Vote</button>
+                                props.voted !== null && (props.voted.lastVoteDate + 7200000) > Date.now()}>Voter</button>
                             </div>
                         </div>
                     </div>

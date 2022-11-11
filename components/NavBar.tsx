@@ -40,7 +40,7 @@ export default function NavBar(props: NavBarProps) {
                                 <p>Ajouter un bot</p>
                                 <span></span>
                             </div>
-                            <Link href={"/profile"}>
+                            <Link href={`/users/${props.user.id}`}>
                                 <p>Profile</p>
                                 <span></span>
                             </Link>
