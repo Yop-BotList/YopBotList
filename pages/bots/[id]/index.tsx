@@ -1,6 +1,6 @@
-import { parseUser } from "../../utils/parse-user";
-import { Bot, DiscordUser } from "../../utils/types";
-import Navbar from "../../components/NavBar";
+import { parseUser } from "../../../utils/parse-user";
+import { Bot, DiscordUser } from "../../../utils/types";
+import Navbar from "../../../components/NavBar";
 import axios from "axios";
 import Link from "next/link";
 import Head from "next/head";
@@ -30,6 +30,7 @@ export default function bot(props: { user: DiscordUser, bot: Bot, team: DiscordU
     return (
         <>
             <Head>
+                <title>{props.bot.username} - Bots</title>
                 <meta property="og:title" content={`${props.bot.username} | Bots`} />
                 <meta property="og:description" content={props.bot.description || "YopBot List est une liste de bots discord qui vous permet de trouver des bots discord de qualité."} />
                 <meta property="og:image" content={props.bot.avatar} />
@@ -41,7 +42,7 @@ export default function bot(props: { user: DiscordUser, bot: Bot, team: DiscordU
                 <div className="bot">
                     <div className="header">
                         <div className="botInfo">
-                            <img src={props.bot.avatar} alt="Avatar" />
+                            <img src={props.bot.avatar} alt="Avatar" className="skeleton" />
                             <h1>{props.bot.username}</h1>
                             <p>{props.bot.description}</p>
                         </div>
@@ -77,7 +78,7 @@ export default function bot(props: { user: DiscordUser, bot: Bot, team: DiscordU
                         <div className="stat">
                             {props.owner.map((owner) => (
                                 <a className="teamMember" href={`/users/${owner.id}`}>
-                                    <img src={`https://cdn.discordapp.com/avatars/${owner.id}/${owner.avatar}.png`} alt="Avatar" />
+                                    <img src={`https://cdn.discordapp.com/avatars/${owner.id}/${owner.avatar}.png`} alt="Avatar" className="skeleton" />
                                     <p>{owner.username}</p>
                                 </a>
                             ))}
@@ -86,7 +87,7 @@ export default function bot(props: { user: DiscordUser, bot: Bot, team: DiscordU
                         {props.bot.team.length !== 0 && (<div className="stat">
                             {props.team.map((member) => (
                                 <a className="teamMember" href={`/users/${member.id}`}>
-                                    <img src={`https://cdn.discordapp.com/avatars/${member.id}/${member.avatar}.png`} alt="Avatar" />
+                                    <img src={`https://cdn.discordapp.com/avatars/${member.id}/${member.avatar}.png`} alt="Avatar" className="skeleton" />
                                     <p>{member.username}</p>
                                 </a>
                             ))}

@@ -1,13 +1,15 @@
 import {NextApiRequest, NextApiResponse} from "next";
-import bots from "../../models/bots";
-import dbConnect from "../../lib/dbConnect";
+import dbConnect from "../../../../lib/dbConnect";
+import { bots } from "../../../../models"
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     await dbConnect();
 
     if (req.method !== "GET") return res.status(405).json({error: "Method not allowed"});
 
-    const botsArray = await bots.find();
+    const bot = await bots.findOne({botId: req.query.id});
 
-    res.status(200).json({ success: true, data: botsArray });
+    if (!bot) return res.status(404).json({error: "Bot not found"});
+
+    res.status(200).json(bot);
 }

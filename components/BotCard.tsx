@@ -1,12 +1,23 @@
 import {Bot} from "../utils/types";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function BotCard(props: { bot: Bot, popular: number }) {
+    const [loaded, setLoaded] = useState(false);
+
+    useEffect(() => {
+        const botAvatar = document.getElementById(`bot-avatar-${props.bot.botId}`) as HTMLImageElement;
+        
+        botAvatar.addEventListener("load", () => {
+            setLoaded(true);
+        });
+    }, []);
+
     return (
         <div className="botCard">
             <div className="head">
                 {props.popular === 0 && <div className="popular">Le plus voté</div>}
-                <img src={props.bot.avatar || "https://cdn.discordapp.com/embed/avatars/0.png"} alt="Avatar" className="avatarBot" draggable={false}/>
+                <img src={props.bot.avatar || "https://cdn.discordapp.com/embed/avatars/0.png"} alt={props.bot.username} className={`avatarBot skeleton`} draggable={false} id={`bot-avatar-${props.bot.botId}`} />
             </div>
             <div className="infos">
                 <h1 className="usernameBot">{props.bot.username || "Aucun nom"}</h1>

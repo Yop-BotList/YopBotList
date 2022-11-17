@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 import { serialize } from 'cookie';
 import { sign } from 'jsonwebtoken';
-import {DiscordUser} from "../../utils/types";
+import {DiscordUser} from "../../../utils/types";
 
 const scope = ["identify"].join(" ");
 const REDIRECT_URI = `${process.env.APP_URL}/api/oauth`
@@ -51,7 +51,7 @@ export default async function handler(
 
   if (!("id" in me)) return res.redirect(OAuthURL);
 
-  const token = sign(me, process.env.JWT_SECRET!, { expiresIn: "1d" });
+  const token = sign(me, process.env.JWT_SECRET!, { expiresIn: "1w" });
 
   res.setHeader("Set-Cookie", serialize(process.env.COOKIENAME!, token, {
     httpOnly: true,

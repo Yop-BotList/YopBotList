@@ -52,7 +52,7 @@ const OAuthURL = `https://discord.com/api/oauth2/authorize?${OAUTH_PARAMS}`;
 
   if (!("id" in me)) return res.redirect(OAuthURL);
 
-  const token = sign(me, process.env.JWT_SECRET!, { expiresIn: "1d" });
+  const token = sign(me, process.env.JWT_SECRET!, { expiresIn: "1w" });
 
   res.setHeader("Set-Cookie", serialize(process.env.COOKIENAME!, token, {
     httpOnly: true,
