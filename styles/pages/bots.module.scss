@@ -87,8 +87,7 @@
             padding: 0.5rem;
             border-radius: 0.5rem;
             color: rgb($white);
-            background-color: rgb($bg);
-            margin-bottom: 0.5rem;
+            background-color: rgba(0, 0, 0, 0.5);
             
             .botInfo {
                 display: flex;
@@ -98,9 +97,9 @@
                 width: 100%;
                 padding: 0.5rem;
                 border-radius: 0.5rem;
-                background-color: rgb($bg);
+                background-color: rgba(0, 0, 0, 0.5);
                 color: rgb($white);
-                margin-bottom: 0.5rem;
+                margin-bottom: 5rem;
                 
                 img {
                     width: 100px;
@@ -137,7 +136,7 @@
                         margin-right: 0.5rem;
                         padding: 0.25rem 0.5rem;
                         border-radius: 0.5rem;
-                        background: rgb($darker-bg);
+                        background: rgba(0, 0, 0, 0.5);
                         color: rgb($white);
                         text-decoration: none;
                         font-size: 1rem;
@@ -173,7 +172,7 @@
                 width: 100%;
                 padding: 0.5rem;
                 border-radius: 0.5rem;
-                background-color: rgb($bg);
+                background-color: rgba(0, 0, 0, 0.5);
                 color: rgb($white);
                 margin: 0.5rem;
                 min-height: 10rem;
@@ -196,10 +195,10 @@
                     width: auto;
                     padding: 0 0.5rem;
                     border-radius: 100px;
-                    background-color: rgb($darker-bg);
+                    background-color: rgba(0, 0, 0, 0.5);
                     color: rgb($white);
                     margin: 0.5rem 0;
-                    transition: all 0.1s ease-in-out;
+                    transition: all 0.2s ease-in-out;
                     
                     & > img {
                         width: 2rem;
@@ -228,16 +227,17 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    height: 100%;
     color: rgb($white);
     
     .botCardHeader {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         align-items: center;
         width: 100%;
+        height: 100%;
         padding: 0.5rem;
-        background-color: rgb($dark-bg);
+        background-color: rgba(0, 0, 0, 0.5);
         color: rgb($white);
         
         .botAvatar {
@@ -285,7 +285,7 @@
                     border-radius: 0.5rem;
                     color: rgb($white);
                     margin: 0.5rem 0;
-                    background-color: rgb($bg);
+                    background-color: rgba(0, 0, 0, 0.5);
                     
                     .botStatNumber {
                         margin: 0 0.25rem;
@@ -320,7 +320,7 @@
                     padding: 0.5rem;
                     border-radius: 0.5rem;
                     color: rgb($white);
-                    background-color: rgb($bg);
+                    background-color: rgba(0, 0, 0, 0.5);
                     
                     .botButton {
                         display: flex;
@@ -331,7 +331,7 @@
                         padding: 0.5rem;
                         border-radius: 0.5rem;
                         color: rgb($white);
-                        background-color: rgb($darker-bg);
+                        background-color: rgba(0, 0, 0, 0.5);
                         transition: all 0.1s ease-in-out;
                     }
                 }
@@ -344,7 +344,7 @@
                     width: 100%;
                     padding: 0.5rem;
                     border-radius: 0.5rem;
-                    background-color: rgb($darker-bg);
+                    background-color: rgba(0, 0, 0, 0.5);
                     color: rgb($white);
                     margin: 0.5rem;
                     transition: all 0.2s ease-in-out;
@@ -381,7 +381,7 @@
         align-items: center;
         width: 100%;
         padding: 0.5rem;
-        background-color: rgb($dark-bg);
+        background-color: rgba(0, 0, 0, 0.5);
         color: rgb($white);
         
         .avatar {
@@ -421,7 +421,7 @@
             width: auto;
             padding: 0.5rem;
             border-radius: 0.5rem;
-            background-color: rgb($darker-bg);
+            background-color: rgba(0, 0, 0, 0.5);
             color: rgb($white);
             margin: 0.5rem;
             transition: all 0.2s ease-in-out;
@@ -468,7 +468,7 @@
                 margin: 0 0.5rem;
                 padding: 0.5rem;
                 border-radius: 0.5rem;
-                background-color: rgb($bg);
+                background-color: rgba(0, 0, 0, 0.5);
                 color: rgb($white);
                 outline: none;
                 border: none;
@@ -476,7 +476,7 @@
                 text-align: center;
                 
                 &:focus {
-                    background-color: rgb($darker-bg);
+                    background-color: rgba(0, 0, 0, 0.75);
                 }
             }
         }
@@ -500,7 +500,7 @@
                 margin: 0.5rem 0;
                 padding: 0.5rem;
                 border-radius: 0.5rem;
-                background-color: rgb($bg);
+                background-color: rgba(0, 0, 0, 0.5);
                 color: rgb($white);
                 outline: none;
                 border: none;
@@ -509,7 +509,7 @@
                 resize: none;
                 
                 &:focus {
-                    background-color: rgb($darker-bg);
+                    background-color: rgba(0, 0, 0, 0.75);
                 }
             }
         }
@@ -548,7 +548,7 @@
                     width: 100%;
                     padding: 0.5rem;
                     border-radius: 0.5rem;
-                    background-color: rgb($bg);
+                    background-color: rgba(0, 0, 0, 0.5);
                     color: rgb($white);
                     margin: 0.5rem;
                     transition: all 0.2s ease-in-out;
@@ -569,14 +569,14 @@
                             width: 1.5rem;
                             height: 1.5rem;
                             border-radius: 0.5rem;
-                            background-color: rgb($dark-bg);
+                            background-color: rgba(0, 0, 0, 0.5);
                             color: rgb($white);
                             margin: 0 0.5rem;
                             transition: all 0.1s ease-in-out;
                             position: relative;
                             
                             &:hover {
-                                background-color: rgb($darker-bg);
+                                background-color: rgba(0, 0, 0, 0.75);
                                 cursor: pointer;
                             }
                             
@@ -705,7 +705,7 @@
                     width: 100%;
                     padding: 0.5rem;
                     border-radius: 0.5rem;
-                    background-color: rgb($bg);
+                    background-color: rgba(0, 0, 0, 0.5);
                     color: rgb($white);
                     margin: 0.5rem;
                     transition: all 0.2s ease-in-out;
@@ -720,7 +720,7 @@
                         margin: 0 0.5rem;
                         padding: 0.5rem;
                         border-radius: 0.5rem;
-                        background-color: rgb($dark-bg);
+                        background-color: rgba(0, 0, 0, 0.5);
                         color: rgb($white);
                         outline: none;
                         border: none;
@@ -728,7 +728,7 @@
                         width: 100%;
                         
                         &:focus {
-                            background-color: rgb($darker-bg);
+                            background-color: rgba(0, 0, 0, 0.75);
                         }
                     }
                 }
@@ -759,7 +759,7 @@
                 width: 100%;
                 padding: 0.5rem;
                 border-radius: 0.5rem;
-                background-color: rgb($bg);
+                background-color: rgba(0, 0, 0, 0.5);
                 color: rgb($white);
                 margin: 0.5rem;
                 transition: all 0.2s ease-in-out;
@@ -823,7 +823,7 @@
                     margin: 0 0.5rem;
                     padding: 0.5rem;
                     border-radius: 0.5rem;
-                    background-color: rgb($dark-bg);
+                    background-color: rgba(0, 0, 0, 0.5);
                     color: rgb($white);
                     outline: none;
                     border: none;
@@ -831,7 +831,7 @@
                     width: 100%;
                     
                     &:focus {
-                        background-color: rgb($darker-bg);
+                        background-color: rgba(0, 0, 0, 0.75);
                     }
                 }
             }
@@ -850,7 +850,7 @@
                 margin: 0 0.5rem;
                 padding: 0.5rem;
                 border-radius: 0.5rem;
-                background-color: rgb($bg);
+                background-color: rgba(0, 0, 0, 0.5);
                 color: rgb($white);
                 outline: none;
                 border: none;
@@ -861,7 +861,8 @@
                 }
                 
                 &:hover {
-                    background-color: rgb($darker-bg);
+                    cursor: pointer;
+                    background-color: rgb($blue);
                 }
             }
         }

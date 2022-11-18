@@ -1,5 +1,5 @@
 .navbar {
-  background: rgb($dark-bg);
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   padding: 1rem;
   border-bottom: 1px solid rgb($darker-bg);
@@ -38,7 +38,7 @@
       }
 
       &:hover {
-        background: rgb($darker-bg);
+        background: rgba(0, 0, 0, 0.5);
 
         &:not(.isActive) > span {
           width: 5px;

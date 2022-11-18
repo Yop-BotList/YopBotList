@@ -7,6 +7,7 @@ $light-blue: 100 110 255;
 $main: 242 172 52;
 $light-main: 255 184 64;
 $cool-bg: linear-gradient(45deg, rgba(242,172,52,1) 40%, rgba(88,101,242,1) 100%);
+$bg-setup: rgb(242,172,52);
 
 html,
 body {
@@ -31,7 +32,8 @@ html {
 
 body {
   color: rgb($white);
-  background: rgb($dark-bg);
+  background: $bg-setup;
+  background: $cool-bg;
 }
 
 .main {
@@ -41,7 +43,7 @@ body {
 footer {
   text-align: center;
   padding: 1rem;
-  background: rgb($darker-bg);
+  background: rgba(0, 0, 0, 0.5);
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -126,5 +128,4 @@ footer {
 
 @import "pages/bots.module";
 @import "pages/index.module";
-@import "pages/profile.module";
 @import "pages/users.module";

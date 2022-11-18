@@ -17,7 +17,7 @@ export default function BotCard(props: { bot: Bot, popular: number }) {
         <div className="botCard">
             <div className="head">
                 {props.popular === 0 && <div className="popular">Le plus voté</div>}
-                <img src={props.bot.avatar || "https://cdn.discordapp.com/embed/avatars/0.png"} alt={props.bot.username} className={`avatarBot skeleton`} draggable={false} id={`bot-avatar-${props.bot.botId}`} />
+                <img src={props.bot.avatar || "https://cdn.discordapp.com/embed/avatars/0.png"} alt={props.bot.username} className={`avatarBot${loaded ? "" : " skeleton"}`} draggable={false} id={`bot-avatar-${props.bot.botId}`} />
             </div>
             <div className="infos">
                 <h1 className="usernameBot">{props.bot.username || "Aucun nom"}</h1>
