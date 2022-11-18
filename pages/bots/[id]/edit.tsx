@@ -52,7 +52,7 @@ export default function Index(props: { user: DiscordUser, bot: Bot }) {
     }
 
     const updateInfo = async () => {
-        const res = await axios.post(`/api/bots/${props.bot.botId}/edit/info`, {
+        const res = await axios.post(`/api/bots/${props.bot.botId}/update`, {
             userId: props.user.id,
         });
 
