@@ -16,10 +16,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (!bot) return res.status(404).json({error: "Bot not found"});
 
-    const userId = req.body.userId;
+    const { userId, reason } = req.body;
 
-    if (!userId) return res.status(400).json({error: "Bad request"});
-    
+    if (!userId) return res.json({error: "Bad request"});
+    if (!reason) return res.json({error: "Bad request"});
+
     const hook = process.env.STAFF_HOOK;
 
     if (!hook) return res.status(500).json({error: "Internal server error"});
@@ -35,6 +36,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             {
                 title: "Signalement !",
                 description: `${user.data.username}#${user.data.discriminator} vient de signaler ${bot.username} !\nMerci à lui !`,
+                fields: [
+                    {
+                        name: "Raison",
+                        value: reason
+                    }
+                ],
                 color: 0xf2ac34,
                 url: `${process.env.APP_URL}/bots/${bot.botId}`
             }

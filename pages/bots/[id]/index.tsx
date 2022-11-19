@@ -4,8 +4,14 @@ import Navbar from "../../../components/NavBar";
 import axios from "axios";
 import Link from "next/link";
 import Head from "next/head";
+import { useState } from "react";
 
 export default function bot(props: { user: DiscordUser, bot: Bot, team: DiscordUser[], owner: DiscordUser[] }) {
+    const [showSignPopup, setShowSignPopup] = useState(false);
+    const [signalError, setSignalError] = useState(false);
+
+    const signalBot = async () => setShowSignPopup(true);
+    
     const update = async () => {
         const res = await axios.post(`/api/bots/${props.bot.botId}/update`, {
             userId: props.user.id
@@ -16,16 +22,23 @@ export default function bot(props: { user: DiscordUser, bot: Bot, team: DiscordU
         }
     }
 
-    const signaler = async () => {
-        // const res = await axios.post(`/api/bots/${props.bot.botId}/signaler`, {
-        //     userId: props.user.id
-        // });
+    const signaler = async (e: any) => {
+        e.preventDefault();
 
-        // if (res.status === 200) {
-        //     window.location.reload();
-        // }
+        const textarea = document.getElementById("reason") as HTMLTextAreaElement;
 
-        alert("Cette fonctionnalité n'est pas encore disponible.");
+        if (textarea.value.length === 0) return setSignalError(true);
+        if (textarea.value.length > 1000) return setSignalError(true);
+
+        const res = await axios.post(`/api/bots/${props.bot.botId}/signaler`, {
+            userId: props.user.id,
+            reason: textarea.value
+        });
+
+        if (res.status === 200) {
+            setSignalError(false);
+            window.location.reload();
+        }
     }
     return (
         <>
@@ -37,7 +50,18 @@ export default function bot(props: { user: DiscordUser, bot: Bot, team: DiscordU
                 <meta property="og:url" content={`https://www.yopbotlist.me/bots/${props.bot.botId}`} />
                 <meta property="og:type" content="website" />
             </Head>
-            <Navbar user={props.user} redirectRoute={`/bots-${props.bot.botId}`} />
+            <Navbar user={props.user} redirectRoute={`/bots-${props.bot.botId}`} /> 
+            <div className={`signalPopup${showSignPopup ? " show" : ""}`}>
+                <div className="signalBot">
+                    <h1>Signaler le bot</h1>
+                    <p>Vous allez signaler le bot <b>{props.bot.username}</b> pour la raison suivante :</p>
+                    <textarea placeholder="Raison du signalement" id="reason" className={signalError ? "error" : ""}></textarea>
+                    <div className="buttons">
+                        <button onClick={() => setShowSignPopup(false)}>Annuler</button>
+                        <button onClick={signaler}>Signaler</button>
+                    </div>
+                </div>
+            </div>
             <div className="container">
                 <div className="bot">
                     <div className="header">
@@ -52,9 +76,8 @@ export default function bot(props: { user: DiscordUser, bot: Bot, team: DiscordU
                                 <a href={`https://discord.com/oauth2/authorize?client_id=${props.bot.botId}&scope=bot&permissions=-1`} target="_blank" rel="noreferrer">Inviter</a>
                                 {props.bot.supportInvite && <a href={props.bot.supportInvite} target="_blank" rel="noreferrer">Serveur support</a>}
                                 <Link href={`/bots/${props.bot.botId}/vote`} rel="noreferrer">Voter: <span>{props.bot.likes}</span></Link>
-                                {props.user && <button onClick={signaler}>Signaler</button>}
+                                {props.user && <button onClick={signalBot}>Signaler</button>}
                                 {props.user && (props.bot.ownerId === props.user.id || props.bot.team.includes(props.user.id)) && <Link href={`/bots/${props.bot.botId}/edit`} rel="noreferrer">Editer</Link>}
-                                {props.user && (props.bot.ownerId === props.user.id || props.bot.team.includes(props.user.id)) && <button onClick={signaler}>Supprimer</button>}
                             </div>
                         </div>
                     </div>
