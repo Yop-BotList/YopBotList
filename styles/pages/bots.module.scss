@@ -789,28 +789,42 @@
                         font-size: 1rem;
                         font-weight: 300;
 
-                        &:hover {
+                        svg {
+                            width: 1rem;
+                            height: 1rem;
+                            transition: all 0.2s ease-in-out;
+                        }
+
+                        &:is(:hover, .clicked) {
                             cursor: pointer;
 
+                            svg {
+                                fill: rgb($blue);
+                            }
+
                             & ~ .tooltip {
-                                display: block;
+                                opacity: 1;
+                                scale: 1;
+                                z-index: 1;
                             }
                         }
                     }
 
                     .tooltip {
-                        display: none;
                         position: absolute;
-                        z-index: 1;
+                        z-index: -1;
                         background-color: rgb($darker-bg);
                         color: rgb($white);
                         padding: 0.75rem;
                         border-radius: 0.5rem 0.5rem 0 0.5rem;
                         font-size: 0.75rem;
                         font-weight: 300;
-                        bottom: 0.5rem;
-                        right: 0.25rem;
                         margin: 0.5rem;
+                        scale: 0;
+                        opacity: 0;
+                        bottom: 0.5rem;
+                        right: 1rem;
+                        transition: all 0.2s ease-in-out;
 
                         a {
                             color: rgb($light-blue);

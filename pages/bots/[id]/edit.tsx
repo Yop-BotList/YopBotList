@@ -5,10 +5,17 @@ import { parseUser } from "../../../utils/parse-user";
 import { Bot, DiscordUser } from "../../../utils/types";
 import { FormEvent, useState } from "react";
 import EditPopup from "../../../components/EditPopup";
+import { BsQuestionCircle } from "react-icons/bs";
 
 export default function Index(props: { user: DiscordUser, bot: Bot }) {
     const [show, setShow] = useState(false);
     const [type, setType] = useState("");
+
+    const [clicked1, setClicked1] = useState(false);
+    const [clicked2, setClicked2] = useState(false);
+
+    const toggleClicked1 = () => setClicked1(!clicked1);
+    const toggleClicked2 = () => setClicked2(!clicked2);
 
     const hidePopup = () => {
         setShow(false);
@@ -152,8 +159,8 @@ export default function Index(props: { user: DiscordUser, bot: Bot }) {
                             <h1>Webhook de votes</h1>
                             <div className="vote">
                                 <label htmlFor="voteHook">
-                                    URL du webhook discord,
-                                    <span>?</span>
+                                    URL du webhook discord
+                                    <span className={`${clicked1 && "clicked"}`} onClick={toggleClicked1}><BsQuestionCircle /></span>
                                     <div className="tooltip">
                                         <a href="https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks" target="_blank">Discord Webhook</a>
                                     </div>
@@ -162,8 +169,8 @@ export default function Index(props: { user: DiscordUser, bot: Bot }) {
                             </div>
                             <div className="vote">
                                 <label htmlFor="hookCode">
-                                    Code du webhook,
-                                    <span>?</span>
+                                    Code du webhook
+                                    <span className={`${clicked2 && "clicked"}`} onClick={toggleClicked2}><BsQuestionCircle /></span>
                                     <div className="tooltip">
                                         <p>Ne pas partager, seul vous pouvez le connaitre.</p>
                                     </div>
