@@ -41,7 +41,7 @@ export default function bots(props: Props) {
     });
 
     return (
-        <div>
+        <>
             <Head>
                 <title>Bots</title>
                 <meta property="og:title" content={`YopBot List | Bots`} />
@@ -51,7 +51,7 @@ export default function bots(props: Props) {
                 <meta property="og:type" content="website" />
             </Head>
             <NavBar user={props.user} redirectRoute={"/bots"}/>
-            <div className="main">
+            <>
                 <div className="searchBar">
                     <input type="text" placeholder="Rechercher un bot" id="search1" />
                     <input type="text" placeholder="Rechercher par prefix" id="search2" />
@@ -64,13 +64,13 @@ export default function bots(props: Props) {
                         <option value="5">Autre</option>
                     </select>
                 </div>
-                <div className="botCards">
+                <div className={`botCards${list.length === 0 ? " empty" : ""}`}>
                     {list.length > 0 ? list.map((bot, index) => (
                         bot && <BotCard bot={bot} popular={1} key={index}/>
                     )) : ("Aucun bot trouvé dans la liste")}
                 </div>
-            </div>
-        </div>
+            </>
+        </>
     );
 }
 

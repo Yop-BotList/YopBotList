@@ -7,7 +7,7 @@ import axios from "axios";
 
 export default function Index(props: Props) {
     return (
-        <div>
+        <>
             <NavBar user={props.user} redirectRoute={"/"} />
             <div className="main">
                 <div className="headline">
@@ -20,7 +20,7 @@ export default function Index(props: Props) {
                     ))}
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 

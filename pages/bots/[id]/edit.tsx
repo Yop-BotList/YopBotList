@@ -69,7 +69,7 @@ export default function Index(props: { user: DiscordUser, bot: Bot }) {
         return;
     }
     return (
-        <div>
+        <>
             <NavBar user={props.user} redirectRoute={`/bots-${props.bot.botId}-edit`}/>
             <div className="main">
                 <div className="editCard">
@@ -184,7 +184,7 @@ export default function Index(props: { user: DiscordUser, bot: Bot }) {
                     </form>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 

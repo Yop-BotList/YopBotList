@@ -18,7 +18,7 @@ export default function Index(props: { user: DiscordUser, bot: Bot, botUser: Dis
     }
 
     return (
-        <div>
+        <>
             <Head>
                 <meta property="og:title" content={`${props.bot.username} | Votes`} />
                 <meta property="og:description" content={props.bot.description || "YopBot List est une liste de bots discord qui vous permet de trouver des bots discord de qualité."} />
@@ -59,7 +59,7 @@ export default function Index(props: { user: DiscordUser, bot: Bot, botUser: Dis
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 
