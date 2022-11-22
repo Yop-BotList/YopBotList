@@ -28,15 +28,13 @@ a {
 
 html {
   color-scheme: dark;
-  background: transparent;
-  height: 100%;
 }
 
 body {
   color: rgb($white);
   background: $bg-setup;
   background: $cool-bg;
-  height: 100% !important;
+  background-attachment: fixed;
 }
 
 .main {

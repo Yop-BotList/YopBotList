@@ -64,10 +64,16 @@ export default function bots(props: Props) {
                         <option value="5">Autre</option>
                     </select>
                 </div>
-                <div className={`botCards${list.length === 0 ? " empty" : ""}`}>
+                <div className="botCards">
                     {list.length > 0 ? list.map((bot, index) => (
                         bot && <BotCard bot={bot} popular={1} key={index}/>
-                    )) : ("Aucun bot trouvé dans la liste")}
+                    )) : (
+                        <div className="noBot">
+                            <h1>Aucun bot trouvé</h1>
+
+                            <p>Essayez de modifier votre recherche</p>
+                        </div>
+                    )}
                 </div>
             </>
         </>
