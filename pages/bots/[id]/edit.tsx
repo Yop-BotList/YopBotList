@@ -211,6 +211,7 @@ export const getServerSideProps: GetServerSideProps<{ user: DiscordUser, bot: Bo
 
     if (!bot.team.includes(user.id)) {
         if (bot.ownerId !== user.id) return redirectBot;
+        else if (bot.ownerId === user.id) return { props: { user, bot } };        
 
         return redirectBot;
     }
