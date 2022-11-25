@@ -22,29 +22,33 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (!bot.team.includes(userId)) {
         if (bot.ownerId !== userId) return res.status(401).json({error: "Unauthorized"});
-        else if (bot.ownerId === userId) {
-            const fetchDiscordUser = async () => {
-                const response = await axios.get(`https://discord.com/api/users/${bot.botId}`, {
-                    headers: {
-                        Authorization: `Bot ${process.env.CLIENT_TOKEN}`
-                    }
-                });
-        
-                return response.data;
-            }
-        
-            const discordUser = await fetchDiscordUser();
-        
-            if (!discordUser) return res.status(404).json({error: "Bot not found"});
-        
-            bot.avatar = `https://cdn.discordapp.com/avatars/${bot.botId}/${discordUser.avatar}.png`;
-            bot.username = discordUser.username;
-        
-            await bot.save();
-        
-            return res.status(200).json({success: true});
-        }
+        else if (bot.ownerId === userId) update();
 
         return res.status(401).json({error: "Unauthorized"});
+    }
+
+    update();
+
+    function update() {
+        const fetchDiscordUser = async () => {
+            const response = await axios.get(`https://discord.com/api/users/${bot.botId}`, {
+                headers: {
+                    Authorization: `Bot ${process.env.CLIENT_TOKEN}`
+                }
+            });
+    
+            return response.data;
+        }
+    
+        const discordUser = await fetchDiscordUser();
+    
+        if (!discordUser) return res.status(404).json({error: "Bot not found"});
+    
+        bot.avatar = `https://cdn.discordapp.com/avatars/${bot.botId}/${discordUser.avatar}.png`;
+        bot.username = discordUser.username;
+    
+        await bot.save();
+    
+        return res.status(200).json({success: true});
     }
 }
