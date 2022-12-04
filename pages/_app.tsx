@@ -1,5 +1,5 @@
-import '../styles/globals.scss'
-import type { AppProps } from 'next/app'
+import '../styles/globals.scss';
+import type { AppProps } from 'next/app';
 import Head from "next/head";
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -24,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 <p>YopBot List - 2020</p>
             </div>
             <div className="end">
-                <p>Notre <a href="https://discord.gg/3dQeTg9Vz3" target="_blank">Discord</a></p>
+                <p>Notre <a href="https://discord.gg/HgDKy7FcVJ" target="_blank">Discord</a></p>
             </div>
         </footer>
       </>
