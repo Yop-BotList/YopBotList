@@ -29,7 +29,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     update();
 
-    function update() {
+    async function update() {
         const fetchDiscordUser = async () => {
             const response = await axios.get(`https://discord.com/api/users/${bot.botId}`, {
                 headers: {
