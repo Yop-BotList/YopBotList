@@ -64,7 +64,7 @@ export default function Index(props: { user: DiscordUser, bot: Bot, botUser: Dis
 }
 
 // @ts-ignore
-export const getServerSideProps: GetServerSideProps<{ user: DiscordUser, bot: Bot }> = async (ctx) => {
+export const getServerSideProps: GetServerSideProps<{ user: DiscordUser, bot: Bot, botUser: DiscordUser, appURL: string, voted: DBUser | null }> = async (ctx) => {
     const user = parseUser(ctx);
 
     const getBot = async () => {
