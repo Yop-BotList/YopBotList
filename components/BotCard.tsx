@@ -21,7 +21,7 @@ export default function BotCard(props: { bot: Bot, popular: number }) {
             </div>
             <div className="infos">
                 <h1 className="usernameBot">{props.bot.username || "Aucun nom"}</h1>
-                {props.bot.description && <p className="descBot">{props.bot.description}</p>}
+                {props.bot.description && <p className="descBot">{props.bot.description.length > 100 ? props.bot.description.substring(0, 100) + "..." : props.bot.description}</p>}
             </div>
             <div className="links">
                 <Link href={`/bots/${props.bot.botId}`} className="mainLink">Voir</Link>

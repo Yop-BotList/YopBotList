@@ -4,7 +4,8 @@ import Navbar from "../../../components/NavBar";
 import axios from "axios";
 import Link from "next/link";
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { marked } from "marked";
 
 export default function bot(props: { user: DiscordUser, bot: Bot, team: DiscordUser[], owner: DiscordUser[] }) {
     const [showSignPopup, setShowSignPopup] = useState(false);
@@ -12,15 +13,11 @@ export default function bot(props: { user: DiscordUser, bot: Bot, team: DiscordU
 
     const signalBot = async () => setShowSignPopup(true);
     
-    const update = async () => {
-        const res = await axios.post(`/api/bots/${props.bot.botId}/update`, {
-            userId: props.user.id
-        });
+    useEffect(() => {
+        const description = document.getElementById("description") as HTMLParagraphElement;
 
-        if (res.status === 200) {
-            window.location.reload();
-        }
-    }
+        if (description) description.innerHTML = marked.parse(props.bot.description);
+    });
 
     const signaler = async (e: any) => {
         e.preventDefault();
@@ -66,9 +63,9 @@ export default function bot(props: { user: DiscordUser, bot: Bot, team: DiscordU
                 <div className="bot">
                     <div className="header">
                         <div className="botInfo">
-                            <img src={props.bot.avatar} alt="Avatar" className="skeleton" />
+                            <img src={props.bot.avatar} alt="Avatar" />
                             <h1>{props.bot.username}</h1>
-                            <p>{props.bot.description}</p>
+                            <p id="description"></p>
                         </div>
                         <div className="info">
                             <div className="links">
