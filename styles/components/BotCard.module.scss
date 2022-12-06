@@ -52,18 +52,20 @@
       position: relative;
 
       .popular {
-        background: rgb($main);
-        color: rgb($white);
+        background: $cool-bg;
+        color: rgb(255, 255, 255);
         padding: 0.25rem 0.5rem;
         border-radius: 0.25rem;
         font-size: 0.75rem;
         font-weight: 600;
         text-transform: uppercase;
         margin-bottom: 0.5rem;
-        transition: all 0.2s ease-in-out;
+        transition: all 0.5s ease-in-out;
+        width: 100%;
+        text-align: center;
 
         &:hover {
-          background: rgba(242 172 52 / 80%);
+          background: $cool-bg-hover;
         }
       }
 

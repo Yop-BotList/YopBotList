@@ -4,6 +4,7 @@ import Navbar from "../../components/NavBar";
 import axios from "axios";
 import Link from "next/link";
 import Head from "next/head";
+import Image from "next/image";
 
 export default function bot(props: { user: DiscordUser, userData: DiscordUser, bots: Bot[] }) {
     return (
@@ -22,6 +23,11 @@ export default function bot(props: { user: DiscordUser, userData: DiscordUser, b
                         <img src={`https://cdn.discordapp.com/avatars/${props.userData.id}/${props.userData.avatar}.png`} alt="Avatar" className="avatar" />
                         <h1>{props.userData.username}#{props.userData.discriminator}</h1>
 
+                        <div className="badge">
+                            <Image src="/dev.png" alt="Dev" width={32} height={32} />
+                            <span className="tooltip">Développeur</span>
+                        </div>
+
                         <div className="buttons">
                             <a href={`https://discord.com/users/${props.userData.id}`} target="_blank" className="button">View Profile</a>
                         </div>
@@ -35,7 +41,7 @@ export default function bot(props: { user: DiscordUser, userData: DiscordUser, b
                                 <div className="bot" key={index}>
                                     <img src={bot.avatar} alt="Avatar" className="avatar" />
                                     <h1>{bot.username}</h1>
-                                    <p>{bot.description}</p>
+                                    {bot.description && <p>{bot.description.substring(0, 100)}...</p>}
                                     <Link href={`/bots/${bot.botId}`} className="button">
                                         Voir le bot
                                     </Link>

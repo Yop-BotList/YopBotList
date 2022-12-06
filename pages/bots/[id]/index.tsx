@@ -14,9 +14,11 @@ export default function bot(props: { user: DiscordUser, bot: Bot, team: DiscordU
     const signalBot = async () => setShowSignPopup(true);
     
     useEffect(() => {
-        const description = document.getElementById("description") as HTMLParagraphElement;
-
-        if (description) description.innerHTML = marked.parse(props.bot.description);
+        if (props.bot.description) {
+            const description = document.getElementById("description") as HTMLParagraphElement;
+    
+            if (description) description.innerHTML = marked.parse(props.bot.description);
+        }
     });
 
     const signaler = async (e: any) => {
