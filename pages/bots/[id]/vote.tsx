@@ -17,6 +17,15 @@ export default function Index(props: { user: DiscordUser, bot: Bot, botUser: Dis
         }
     }
 
+    const convert = (time: number) => {
+
+        const hours = Math.floor(time / 3600);
+        const minutes = Math.floor(time / 60) - (hours * 60);
+        const seconds = time % 60;
+
+        return `${hours}h ${minutes}m ${seconds}s`;
+    }
+
     return (
         <>
             <Head>
@@ -49,7 +58,7 @@ export default function Index(props: { user: DiscordUser, bot: Bot, botUser: Dis
 
                                 {props.user &&
                                 props.voted !== null && (props.voted.lastVoteDate + 7200000) > Date.now() && <div className="auth">
-                                    <p>Vous avez déjà voté il y a moins de 2 heures. Veuillez réessayer dans {Math.floor(((props.voted.lastVoteDate + 7200000) - Date.now()) / 60000)} minutes.</p>
+                                    <p>Vous avez déjà voté il y a moins de 2 heures. Veuillez réessayer dans {convert(Math.floor((props.voted.lastVoteDate + 7200000 - Date.now()) / 1000))}</p>
                                 </div>}
 
                                 <button className="botButton" onClick={vote} disabled={(!props.user ? true : false) ||

@@ -43,7 +43,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     }
                 ],
                 color: 0xf2ac34,
-                url: `${process.env.APP_URL}/bots/${bot.botId}`
+                url: `${process.env.APP_URL}/bots/${bot.botId}`,
+                thumbnail: {
+                    url: bot.avatar
+                }
             }
         ]
     });
