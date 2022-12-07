@@ -5,6 +5,7 @@ import { parseUser } from "../../../utils/parse-user";
 import { Bot, DBUser, DiscordUser } from "../../../utils/types";
 import Link from "next/link";
 import Head from "next/head";
+import Image from "next/image";
 
 export default function Index(props: { user: DiscordUser, bot: Bot, botUser: DiscordUser, appURL: string, voted: DBUser | null }) {
     const vote = async () => {
@@ -39,7 +40,7 @@ export default function Index(props: { user: DiscordUser, bot: Bot, botUser: Dis
             <div className="main">
                 <div className="voteCard">
                     <div className="botCardHeader">
-                        <img src={props.bot.avatar} alt="Bot Avatar" className="botAvatar"/>
+                        <Image src={props.bot.avatar} alt="Bot Avatar" className="botAvatar" width={100} height={100} />
                         <div className="botInfo">
                             <h1 className="botName">{props.botUser.username}</h1>
 

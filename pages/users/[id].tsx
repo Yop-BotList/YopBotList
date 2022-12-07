@@ -20,7 +20,7 @@ export default function bot(props: { user: DiscordUser, userData: DiscordUser, b
             <div className="userCard">
                 <div className="header">
                     <div className="profile">
-                        <img src={`https://cdn.discordapp.com/avatars/${props.userData.id}/${props.userData.avatar}.png`} alt="Avatar" className="avatar" />
+                        <Image src={`https://cdn.discordapp.com/avatars/${props.userData.id}/${props.userData.avatar}.png`} alt="Avatar" className="avatar" width={150} height={150} />
                         <h1>{props.userData.username}#{props.userData.discriminator}</h1>
 
                         <div className="badge">
@@ -39,7 +39,7 @@ export default function bot(props: { user: DiscordUser, userData: DiscordUser, b
                         <div className="bots">
                             {props.bots.map((bot, index) => (
                                 <div className="bot" key={index}>
-                                    <img src={bot.avatar} alt="Avatar" className="avatar" />
+                                    <Image src={bot.avatar} alt="Avatar" className="avatar" width={150} height={150} />
                                     <h1>{bot.username}</h1>
                                     {bot.description && <p>{bot.description.substring(0, 100)}...</p>}
                                     <Link href={`/bots/${bot.botId}`} className="button">

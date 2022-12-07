@@ -4,22 +4,14 @@ import Navbar from "../../../components/NavBar";
 import axios from "axios";
 import Link from "next/link";
 import Head from "next/head";
-import { useEffect, useState } from "react";
-import { marked } from "marked";
+import { useState } from "react";
+import Image from "next/image";
 
 export default function bot(props: { user: DiscordUser, bot: Bot, team: DiscordUser[], owner: DiscordUser[] }) {
     const [showSignPopup, setShowSignPopup] = useState(false);
     const [signalError, setSignalError] = useState(false);
 
     const signalBot = async () => setShowSignPopup(true);
-    
-    useEffect(() => {
-        if (props.bot.description) {
-            const description = document.getElementById("description") as HTMLParagraphElement;
-    
-            if (description) description.innerHTML = marked.parse(props.bot.description);
-        }
-    });
 
     const signaler = async (e: any) => {
         e.preventDefault();
@@ -65,9 +57,9 @@ export default function bot(props: { user: DiscordUser, bot: Bot, team: DiscordU
                 <div className="bot">
                     <div className="header">
                         <div className="botInfo">
-                            <img src={props.bot.avatar} alt="Avatar" />
+                            <Image src={props.bot.avatar} alt="Avatar" width={100} height={100} />
                             <h1>{props.bot.username}</h1>
-                            <p id="description"></p>
+                            {props.bot.description && <p>{props.bot.description}</p>}
                         </div>
                         <div className="info">
                             <div className="links">
@@ -100,7 +92,7 @@ export default function bot(props: { user: DiscordUser, bot: Bot, team: DiscordU
                         <div className="stat">
                             {props.owner.map((owner) => (
                                 <a className="teamMember" href={`/users/${owner.id}`}>
-                                    <img src={`https://cdn.discordapp.com/avatars/${owner.id}/${owner.avatar}.png`} alt="Avatar" className="skeleton" />
+                                    <Image src={`https://cdn.discordapp.com/avatars/${owner.id}/${owner.avatar}.png`} alt="Avatar" className="skeleton" width={50} height={50} />
                                     <p>{owner.username}</p>
                                 </a>
                             ))}
@@ -109,7 +101,7 @@ export default function bot(props: { user: DiscordUser, bot: Bot, team: DiscordU
                         {props.bot.team.length !== 0 && (<div className="stat">
                             {props.team.map((member) => (
                                 <a className="teamMember" href={`/users/${member.id}`}>
-                                    <img src={`https://cdn.discordapp.com/avatars/${member.id}/${member.avatar}.png`} alt="Avatar" className="skeleton" />
+                                    <Image src={`https://cdn.discordapp.com/avatars/${member.id}/${member.avatar}.png`} alt="Avatar" className="skeleton" width={50} height={50} />
                                     <p>{member.username}</p>
                                 </a>
                             ))}

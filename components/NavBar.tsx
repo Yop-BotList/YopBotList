@@ -3,6 +3,7 @@ import Link from "next/link";
 import {useRouter} from "next/router";
 import {useState} from "react";
 import AddBotPopup from "./AddBotPopup";
+import Image from "next/image";
 
 export default function NavBar(props: NavBarProps) {
     const router = useRouter()
@@ -16,7 +17,7 @@ export default function NavBar(props: NavBarProps) {
     // @ts-ignore
     return (
         <div className="navbar">
-            <img src="https://cdn.discordapp.com/icons/782644006190055486/abebf32ccdda97f12f9d4aaaa0e064fc.webp" alt="logo" className="logo" />
+            <Image src="/yopbot.png" alt="logo" className="logo skeleton" width={50} height={50} />
             <div className="links">
                 <Link href={"/"} className={router.pathname === "/" ? "isActive" : ""}>
                     Accueil
@@ -31,7 +32,7 @@ export default function NavBar(props: NavBarProps) {
                 {props.user ? (
                     <button className="profile" onClick={toggleMenu}>
                         <div className="infos">
-                            <img alt="" src={`https://cdn.discordapp.com/avatars/${props.user.id}/${props.user.avatar}.png`} />
+                            <Image alt="" src={`https://cdn.discordapp.com/avatars/${props.user.id}/${props.user.avatar}.png`} width={50} height={50} draggable={false} />
                             <p>{props.user.username}</p>
                         </div>
 

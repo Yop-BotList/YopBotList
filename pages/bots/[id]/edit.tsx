@@ -6,6 +6,7 @@ import { Bot, DiscordUser } from "../../../utils/types";
 import { FormEvent, useState } from "react";
 import EditPopup from "../../../components/EditPopup";
 import { BsQuestionCircle } from "react-icons/bs";
+import Image from "next/image";
 
 export default function Index(props: { user: DiscordUser, bot: Bot }) {
     const [show, setShow] = useState(false);
@@ -75,7 +76,7 @@ export default function Index(props: { user: DiscordUser, bot: Bot }) {
                 <div className="editCard">
                     <EditPopup show={show} hideFunc={hidePopup} type={type} />
                     <div className="header">
-                        <img src={props.bot.avatar} alt="avatar" className="avatar"/>
+                        <Image src={props.bot.avatar} alt="avatar" className="avatar" width={100} height={100} />
                         <div className="info">
                             <h1>{props.bot.username}</h1>
                         </div>
