@@ -1,6 +1,6 @@
 import {NextApiRequest, NextApiResponse} from "next";
 import dbConnect from "../../../../lib/dbConnect";
-import { bots } from "../../../../models";
+import {bots, users} from "../../../../models";
 import { Bot } from "../../../../utils/types";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -10,13 +10,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     let userBots = await bots.find({ownerId: req.query.id});
 
+    let dbUser = await users.findOne({ userId: req.query.id });
+
     if (userBots.length === 0) {
         userBots = await bots.find();
 
         userBots = userBots.filter((bot: Bot) => bot.team.includes(`${req.query.id}`));
 
-        return res.status(200).json(userBots);
+        return res.status(200).json({
+            bots: userBots,
+            user: dbUser
+        });
     }
 
-    res.status(200).json(userBots);
+    res.status(200).json({
+        bots: userBots,
+        user: dbUser
+    });
 }

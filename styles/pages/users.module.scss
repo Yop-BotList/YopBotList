@@ -42,31 +42,45 @@
                 margin-bottom: 10px;
             }
 
-            .badge {
-                position: relative;
+            .badges {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                margin: 10px 0;
 
-                img {
-                    width: 2rem;
-                    height: 2rem;
-                    margin-right: 5px;
-                }
+                .badge {
+                    position: relative;
+                    cursor: pointer;
+                    transition: all 0.2s ease-in-out;
 
-                .tooltip {
-                    scale: 0;
-                    position: absolute;
-                    top: -120%;
-                    left: -100%;
-                    border-radius: 5px;
-                    background-color: rgba(0, 0, 0, 0.5);
-                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-                    transition: all 0.3s ease-in-out;
-                    padding: 10px;
-                    z-index: 1;
-                }
+                    img {
+                        width: 3rem;
+                        height: 3rem;
+                        margin-right: 5px;
+                    }
 
-                &:hover {
                     .tooltip {
-                        scale: 1;
+                        scale: 0;
+                        position: absolute;
+                        top: -3.5rem;
+                        left: -1rem;
+                        border-radius: 5px;
+                        background-color: rgba(0, 0, 0, 0.5);
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                        transition: all 0.2s ease-in-out;
+                        padding: 10px;
+                        z-index: 1;
+                    }
+
+                    &:hover {
+                        scale: 1.1;
+
+                        .tooltip {
+                            scale: 1;
+                        }
                     }
                 }
             }

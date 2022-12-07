@@ -104,6 +104,21 @@ export interface DBUser {
     readFaq: boolean;
     locale: string;
     lastVoteDate: number;
+    badges: Badge[];
+}
+
+export interface Badge {
+    id: BadgeId;
+    acquired: boolean;
+}
+
+export enum BadgeId {
+    DEV = "dev",
+    PARTNER = "partner",
+    PREMIUM = "premium",
+    STAFF = "staff",
+    SUPPORT = "support",
+    VERIFICATOR = "verificator"
 }
 
 export interface Warn {

@@ -1,12 +1,12 @@
 import { parseUser } from "../../utils/parse-user";
-import { Bot, DiscordUser } from "../../utils/types";
+import {Bot, DBUser, DiscordUser} from "../../utils/types";
 import Navbar from "../../components/NavBar";
 import axios from "axios";
 import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
 
-export default function bot(props: { user: DiscordUser, userData: DiscordUser, bots: Bot[] }) {
+export default function bot(props: { user: DiscordUser, userData: DiscordUser, db: { bots: Bot[], user: DBUser } }) {
     return (
         <>
             <Head>
@@ -23,13 +23,47 @@ export default function bot(props: { user: DiscordUser, userData: DiscordUser, b
                         <Image src={`https://cdn.discordapp.com/avatars/${props.userData.id}/${props.userData.avatar}.png`} alt="Avatar" className="avatar" width={150} height={150} />
                         <h1>{props.userData.username}#{props.userData.discriminator}</h1>
 
-                        <div className="badge">
-                            <Image src="/dev.png" alt="Dev" width={32} height={32} />
-                            <span className="tooltip">Développeur</span>
+                        <div className="badges">
+                            {props.db.user?.badges && props.db.user.badges.filter(badge => badge.id === "dev")[0] ? (
+                                <div className="badge">
+                                    <Image src="/dev.png" alt="Dev" width={32} height={32} />
+                                    <span className="tooltip">Développeur</span>
+                                </div>
+                            ) : null}
+                            {props.db.user?.badges && props.db.user.badges.filter(badge => badge.id === "partner")[0] ? (
+                                <div className="badge">
+                                    <Image src="/partner.png" alt="Partner" width={32} height={32} />
+                                    <span className="tooltip">Partenaire</span>
+                                </div>
+                            ) : null}
+                            {props.db.user?.badges && props.db.user.badges.filter(badge => badge.id === "premium")[0] ? (
+                                <div className="badge">
+                                    <Image src="/premium.png" alt="Premium" width={32} height={32} />
+                                    <span className="tooltip">Premium</span>
+                                </div>
+                            ) : null}
+                            {props.db.user?.badges && props.db.user.badges.filter(badge => badge.id === "staff")[0] ? (
+                                <div className="badge">
+                                    <Image src="/staff.png" alt="Staff" width={32} height={32} />
+                                    <span className="tooltip">Staff</span>
+                                </div>
+                            ) : null}
+                            {props.db.user?.badges && props.db.user.badges.filter(badge => badge.id === "support")[0] ? (
+                                <div className="badge">
+                                    <Image src="/support.png" alt="Support" width={32} height={32} />
+                                    <span className="tooltip">Support</span>
+                                </div>
+                            ) : null}
+                            {props.db.user?.badges && props.db.user.badges.filter(badge => badge.id === "verificator")[0] ? (
+                                <div className="badge">
+                                    <Image src="/verificators.png" alt="Verificators" width={32} height={32} />
+                                    <span className="tooltip">Vérificateur</span>
+                                </div>
+                            ) : null}
                         </div>
 
                         <div className="buttons">
-                            <a href={`https://discord.com/users/${props.userData.id}`} target="_blank" className="button">View Profile</a>
+                            <a href={`https://discord.com/users/${props.userData.id}`} target="_blank" className="button">View on Discord</a>
                         </div>
                     </div>
 
@@ -37,7 +71,7 @@ export default function bot(props: { user: DiscordUser, userData: DiscordUser, b
                         <h1>Robots de {props.userData.username}#{props.userData.discriminator}</h1>
 
                         <div className="bots">
-                            {props.bots.map((bot, index) => (
+                            {props.db.bots.map((bot, index) => (
                                 <div className="bot" key={index}>
                                     <Image src={bot.avatar} alt="Avatar" className="avatar" width={150} height={150} />
                                     <h1>{bot.username}</h1>
@@ -56,7 +90,7 @@ export default function bot(props: { user: DiscordUser, userData: DiscordUser, b
 }
 
 // @ts-ignore
-export const getServerSideProps: GetServerSideProps<{ user: DiscordUser, bot: Bot }> = async (ctx) => {
+export const getServerSideProps: GetServerSideProps<{ user: DiscordUser, bot: Bot, db: { bots: Bot[], user: DBUser } }> = async (ctx) => {
     const user = parseUser(ctx);
 
     const getUser = async () => {
@@ -81,11 +115,13 @@ export const getServerSideProps: GetServerSideProps<{ user: DiscordUser, bot: Bo
         return res.data;
     }
 
-    const userBots = async () => {
+    const userData = async () => {
         const res = await axios.get(`${process.env.APP_URL}/api/users/${ctx.query.id}`);
 
         return res.data;
     }
 
-    return { props: { user, userData: await getUser(), bots: await userBots() } };
+    const data = await userData();
+
+    return { props: { user, userData: await getUser(), db: { bots: data.bots, user: data.user } } };
 }
