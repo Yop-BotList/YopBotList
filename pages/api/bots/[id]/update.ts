@@ -16,7 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (!bot) return res.status(404).json({error: "Bot not found"});
 
-    const userId = req.body.userId;
+    const { userId } = req.body;
 
     if (!userId) return res.status(400).json({error: "Bad request"});
 
