@@ -27,37 +27,55 @@ export default function bot(props: { user: DiscordUser, userData: DiscordUser, d
                             {props.db.user?.badges && props.db.user.badges.filter(badge => badge.id === "dev")[0] ? (
                                 <div className="badge">
                                     <Image src="/dev.png" alt="Dev" width={32} height={32} />
-                                    <span className="tooltip">Développeur</span>
+                                    <span className="tooltip">
+                                        Développeur
+                                        <span className="downarrow"></span>
+                                    </span>
                                 </div>
                             ) : null}
                             {props.db.user?.badges && props.db.user.badges.filter(badge => badge.id === "partner")[0] ? (
                                 <div className="badge">
                                     <Image src="/partner.png" alt="Partner" width={32} height={32} />
-                                    <span className="tooltip">Partenaire</span>
+                                    <span className="tooltip">
+                                        Partenaire
+                                        <span className="downarrow"></span>
+                                    </span>
                                 </div>
                             ) : null}
                             {props.db.user?.badges && props.db.user.badges.filter(badge => badge.id === "premium")[0] ? (
                                 <div className="badge">
                                     <Image src="/premium.png" alt="Premium" width={32} height={32} />
-                                    <span className="tooltip">Premium</span>
+                                    <span className="tooltip">
+                                        Premium
+                                        <span className="downarrow"></span>
+                                    </span>
                                 </div>
                             ) : null}
                             {props.db.user?.badges && props.db.user.badges.filter(badge => badge.id === "staff")[0] ? (
                                 <div className="badge">
                                     <Image src="/staff.png" alt="Staff" width={32} height={32} />
-                                    <span className="tooltip">Staff</span>
+                                    <span className="tooltip">
+                                        Staff
+                                        <span className="downarrow"></span>
+                                    </span>
                                 </div>
                             ) : null}
                             {props.db.user?.badges && props.db.user.badges.filter(badge => badge.id === "support")[0] ? (
                                 <div className="badge">
                                     <Image src="/support.png" alt="Support" width={32} height={32} />
-                                    <span className="tooltip">Support</span>
+                                    <span className="tooltip">
+                                        Support
+                                        <span className="downarrow"></span>
+                                    </span>
                                 </div>
                             ) : null}
                             {props.db.user?.badges && props.db.user.badges.filter(badge => badge.id === "verificator")[0] ? (
                                 <div className="badge">
                                     <Image src="/verificators.png" alt="Verificators" width={32} height={32} />
-                                    <span className="tooltip">Vérificateur</span>
+                                    <span className="tooltip">
+                                        Vérificateur
+                                        <span className="downarrow"></span>
+                                    </span>
                                 </div>
                             ) : null}
                         </div>
