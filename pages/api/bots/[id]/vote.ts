@@ -19,6 +19,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const userId = req.body.userId;
 
     if (!userId) return res.status(400).json({error: "Bad request"});
+
+    const userDoc = await users.findOne({userId: userId});
+
+    if (userDoc && (userDoc.lastVoteDate + 7200000) > Date.now()) return res.status(400).json({error: "You have already voted for this bot in the last 2 hours"});
     
     const hook = process.env.VOTE_HOOK;
 
@@ -51,8 +55,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     bot.likes += 1;
 
     await bot.save();
-
-    const userDoc = await users.findOne({userId: userId});
 
     if (!userDoc) return res.status(404).json({error: "User not found"});
 
