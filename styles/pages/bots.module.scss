@@ -18,15 +18,15 @@
         color: rgb($white);
         outline: none;
         transition: all 0.2s ease-in-out;
-
+        
         &:hover {
             background-color: rgba(0, 0, 0, 0.7);
         }
-
+        
         &:focus {
             background-color: rgba(0, 0, 0, 0.7);
         }
-
+        
         &::placeholder {
             color: rgb($white);
         }
@@ -373,6 +373,59 @@
                     &:not(:disabled):hover {
                         background-color: rgb($blue);
                     }
+                    
+                    .loader {
+                        height: 32px;
+                        width: 32px;
+                        position: relative;
+                        
+                        span {
+                            display: block;
+                            position: absolute;
+                            top: 0; left: 0;
+                            bottom: 0; right: 0;
+                            margin: auto;
+                            height: 14px;
+                            width: 14px;
+                            
+                            &::before, &::after {
+                                content: "";
+                                display: block;
+                                position: absolute;
+                                top: 0; left: 0;
+                                bottom: 0; right: 0;
+                                margin: auto;
+                                height: 14px;
+                                width: 14px;
+                                border: 2px solid #FFF;
+                                border-radius: 50%;
+                                opacity: 0;
+                                -webkit-animation: loader-6-1 1.5s cubic-bezier(0.075, 0.820, 0.165, 1.000) infinite;
+                                animation: loader-6-1 1.5s cubic-bezier(0.075, 0.820, 0.165, 1.000) infinite;
+                                
+                                @-webkit-keyframes loader-6-1 {
+                                    0%   { -webkit-transform: translate3d(0, 0, 0) scale(0); opacity: 1; }
+                                    100% { -webkit-transform: translate3d(0, 0, 0) scale(1.5); opacity: 0; }
+                                }
+                                @keyframes loader-6-1 {
+                                    0%   { transform: translate3d(0, 0, 0) scale(0); opacity: 1; }
+                                    100% { transform: translate3d(0, 0, 0) scale(1.5); opacity: 0; }
+                                }
+                                &::after {
+                                    -webkit-animation: loader-6-2 1.5s cubic-bezier(0.075, 0.820, 0.165, 1.000) .25s infinite;
+                                    animation: loader-6-2 1.5s cubic-bezier(0.075, 0.820, 0.165, 1.000) .25s infinite;
+                                }
+                                @-webkit-keyframes loader-6-2 {
+                                    0%   { -webkit-transform: translate3d(0, 0, 0) scale(0); opacity: 1; }
+                                    100% { -webkit-transform: translate3d(0, 0, 0) scale(1); opacity: 0; }
+                                }
+                                @keyframes loader-6-2 {
+                                    0%   { transform: translate3d(0, 0, 0) scale(0); opacity: 1; }
+                                    100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0; }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -425,7 +478,7 @@
                 font-weight: 500;
             }
         }
-
+        
         .updateInfo {
             display: flex;
             flex-direction: row;
@@ -442,11 +495,11 @@
             border: none;
             cursor: pointer;
             height: 2rem;
-
+            
             &:disabled {
                 cursor: not-allowed;
             }
-
+            
             &:not(:disabled):hover {
                 background-color: rgb($blue);
             }
@@ -629,22 +682,22 @@
                                     animation-fill-mode: forwards;
                                     background-position: left top;
                                 }
-
+                                
                                 @keyframes checkmark {
                                     0% {
                                         width: 0;
                                     }
-
+                                    
                                     100% {
                                         width: 0.5rem;
                                     }
                                 }
-
+                                
                                 @keyframes checkmark2 {
                                     0% {
                                         width: 0;
                                     }
-
+                                    
                                     100% {
                                         width: 0.75rem;
                                         left: 0.04rem;
@@ -782,25 +835,25 @@
                     font-size: 1rem;
                     font-weight: 300;
                     position: relative;
-
+                    
                     span {
                         margin: 0 0.5rem;
                         font-size: 1rem;
                         font-weight: 300;
-
+                        
                         svg {
                             width: 1rem;
                             height: 1rem;
                             transition: all 0.2s ease-in-out;
                         }
-
+                        
                         &:is(:hover, .clicked) {
                             cursor: pointer;
-
+                            
                             svg {
                                 fill: rgb($blue);
                             }
-
+                            
                             & ~ .tooltip {
                                 opacity: 1;
                                 scale: 1;
@@ -808,7 +861,7 @@
                             }
                         }
                     }
-
+                    
                     .tooltip {
                         position: absolute;
                         z-index: -1;
@@ -824,22 +877,22 @@
                         bottom: 0.5rem;
                         right: 1rem;
                         transition: all 0.2s ease-in-out;
-
+                        
                         a {
                             color: rgb($light-blue);
                             text-decoration: none;
                             transition: all 0.2s ease-in-out;
                             margin: 0;
-
+                            
                             &:hover {
                                 color: rgb($blue);
                             }
                         }
-
+                        
                         p {
                             margin: 0;
                         }
-
+                        
                         &:hover {
                             display: block;
                         }
@@ -1014,7 +1067,7 @@
         z-index: 1000;
         scale: 1;
     }
-
+    
     .signalBot {
         display: flex;
         flex-direction: column;
@@ -1026,19 +1079,19 @@
         border-radius: 0.5rem;
         padding: 1rem;
         position: relative;
-
+        
         h1 {
             margin: 0;
             font-size: 1rem;
             font-weight: 300;
         }
-
+        
         p {
             margin: 0;
             font-size: 0.75rem;
             font-weight: 300;
         }
-
+        
         textarea {
             margin: 0.5rem 0;
             padding: 0.5rem;
@@ -1052,17 +1105,17 @@
             width: 100%;
             height: 100px;
             resize: none;
-
+            
             &.error {
                 border: 1px solid red;
             }
-
+            
             &:not(.error):is(:hover, :focus) {
                 background-color: rgba(0, 0, 0, 0.75);
                 border: 1px solid rgb($light-blue);
             }
         }
-
+        
         .buttons {
             display: flex;
             flex-direction: row;
@@ -1071,7 +1124,7 @@
             width: 100%;
             padding: 0.5rem;
             color: rgb($white);
-
+            
             button {
                 margin: 0 0.5rem;
                 padding: 0.5rem;
@@ -1082,7 +1135,7 @@
                 border: none;
                 transition: all 0.2s ease-in-out;
                 cursor: pointer;
-
+                
                 &:is(:hover, :focus) {
                     background-color: rgb($blue);
                 }

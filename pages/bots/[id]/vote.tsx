@@ -6,9 +6,18 @@ import { Bot, DBUser, DiscordUser } from "../../../utils/types";
 import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Index(props: { user: DiscordUser, bot: Bot, botUser: DiscordUser, appURL: string, voted: DBUser | null }) {
+    const [voted, setVoted] = useState((!props.user ? true : false) || props.voted !== null && (props.voted.lastVoteDate + 7200000) > Date.now());
+
+    const [voteLoading, setVoteLoading] = useState(false);
+
+
     const vote = async () => {
+        setVoteLoading(true);
+        setVoted(true);
+
         const res = await axios.post(`/api/bots/${props.bot.botId}/vote`, {
             userId: props.user.id
         });
@@ -62,8 +71,11 @@ export default function Index(props: { user: DiscordUser, bot: Bot, botUser: Dis
                                     <p>Vous avez déjà voté il y a moins de 2 heures. Veuillez réessayer dans {convert(Math.floor((props.voted.lastVoteDate + 7200000 - Date.now()) / 1000))}</p>
                                 </div>}
 
-                                <button className="botButton" onClick={vote} disabled={(!props.user ? true : false) ||
-                                props.voted !== null && (props.voted.lastVoteDate + 7200000) > Date.now()}>Voter</button>
+                                <button className="botButton" onClick={vote} disabled={voted}>
+                                    {voteLoading ? <div className="loader">
+                                        <span></span>
+                                    </div> : "Voter"}
+                                </button>
                             </div>
                         </div>
                     </div>
