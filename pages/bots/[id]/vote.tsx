@@ -12,6 +12,7 @@ export default function Index(props: { user: DiscordUser, bot: Bot, botUser: Dis
     const [voted, setVoted] = useState((!props.user ? true : false) || props.voted !== null && (props.voted.lastVoteDate + 7200000) > Date.now());
 
     const [voteLoading, setVoteLoading] = useState(false);
+    const [voteTimeout, setVoteTimeout] = useState<string>();
 
 
     const vote = async () => {
@@ -37,8 +38,20 @@ export default function Index(props: { user: DiscordUser, bot: Bot, botUser: Dis
         const minutes = Math.floor(time / 60) - (hours * 60);
         const seconds = time % 60;
 
-        return `${hours}h ${minutes}m ${seconds}s`;
+        if (hours === 0 && minutes === 0 && seconds === 0) return setVoteTimeout("2h 0m 0s");
+
+        if (hours === 0 && minutes === 0) return setVoteTimeout(`${seconds}s`);
+
+        if (hours === 0) return setVoteTimeout(`${minutes}m ${seconds}s`);
+
+        return setVoteTimeout(`${hours}h ${minutes}m ${seconds}s`);
     }
+
+    setInterval(() => {
+        if (props.voted !== null && (props.voted.lastVoteDate + 7200000) > Date.now()) {
+            convert(Math.floor((props.voted.lastVoteDate + 7200000 - Date.now()) / 1000));
+        }
+    }, 1000);
 
     return (
         <>
@@ -72,7 +85,7 @@ export default function Index(props: { user: DiscordUser, bot: Bot, botUser: Dis
 
                                 {props.user &&
                                 props.voted !== null && (props.voted.lastVoteDate + 7200000) > Date.now() && <div className="auth">
-                                    <p>Vous avez déjà voté il y a moins de 2 heures. Veuillez réessayer dans {convert(Math.floor((props.voted.lastVoteDate + 7200000 - Date.now()) / 1000))}</p>
+                                    <p>Vous avez déjà voté il y a moins de 2 heures. Veuillez réessayer dans {voteTimeout}</p>
                                 </div>}
 
                                 <button className="botButton" onClick={vote} disabled={voted}>
