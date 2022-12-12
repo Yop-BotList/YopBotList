@@ -18,6 +18,10 @@ export default function Index(props: { user: DiscordUser, bot: Bot, botUser: Dis
         setVoteLoading(true);
         setVoted(true);
 
+        if (!props.user) return;
+
+        if (props.voted !== null && (props.voted.lastVoteDate + 7200000) > Date.now()) return;
+
         const res = await axios.post(`/api/bots/${props.bot.botId}/vote`, {
             userId: props.user.id
         });
