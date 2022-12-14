@@ -4,10 +4,18 @@ import { parseUser } from "../utils/parse-user";
 import NavBar from "../components/NavBar";
 import BotCard from "../components/BotCard";
 import axios from "axios";
+import Head from "next/head";
 
 export default function Index(props: Props) {
     return (
         <>
+            <Head>
+                <meta property="og:title" content="YopBot List" />
+                <meta property="og:description" content="YopBot List est une liste de bots discord qui vous permet de trouver des bots discord de qualité." />
+                <meta property="og:image" content="/yopbot.png" />
+                <meta property="og:url" content="https://www.yopbotlist.me" />
+                <meta property="og:type" content="website" />
+            </Head>
             <NavBar user={props.user} redirectRoute={"/"} />
             <div className="main">
                 <div className="headline">

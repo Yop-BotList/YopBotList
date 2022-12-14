@@ -7,6 +7,7 @@ import { FormEvent, useState } from "react";
 import EditPopup from "../../../components/EditPopup";
 import { BsQuestionCircle } from "react-icons/bs";
 import Image from "next/image";
+import Head from "next/head";
 
 export default function Index(props: { user: DiscordUser, bot: Bot }) {
     const [show, setShow] = useState(false);
@@ -71,6 +72,14 @@ export default function Index(props: { user: DiscordUser, bot: Bot }) {
     }
     return (
         <>
+            <Head>
+                <title>{props.bot.username} - Bots</title>
+                <meta property="og:title" content={`${props.bot.username} | Bots`} />
+                <meta property="og:description" content={props.bot.description ? (props.bot.description.length > 100 ? props.bot.description.substring(0, 100) + "..." : props.bot.description) : "YopBot List est une liste de bots discord qui vous permet de trouver des bots discord de qualité."} />
+                <meta property="og:image" content={props.bot.avatar} />
+                <meta property="og:url" content={`https://www.yopbotlist.me/bots/${props.bot.botId}/edit`} />
+                <meta property="og:type" content="website" />
+            </Head>
             <NavBar user={props.user} redirectRoute={`/bots-${props.bot.botId}-edit`}/>
             <div className="main">
                 <div className="editCard">

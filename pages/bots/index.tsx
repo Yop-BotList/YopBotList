@@ -44,7 +44,7 @@ export default function bots(props: Props) {
         <>
             <Head>
                 <title>Bots</title>
-                <meta property="og:title" content={`YopBot List | Bots`} />
+                <meta property="og:title" content={`YopBotList | Bots`} />
                 <meta property="og:description" content={"YopBot List est une liste de bots discord qui vous permet de trouver des bots discord de qualité."} />
                 <meta property="og:image" content="/yopbot.png" />
                 <meta property="og:url" content={`https://www.yopbotlist.me/bots`} />

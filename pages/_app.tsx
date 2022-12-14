@@ -19,12 +19,6 @@ export default function App({ Component, pageProps }: AppProps) {
                 <title>YopBot List</title>
                 <link rel="icon" href="/yopbot.png" />
                 <meta name="description" content="YopBot List est une liste de bots discord qui vous permet de trouver des bots discord de qualité." />
-
-                <meta property="og:title" content="YopBot List" />
-                <meta property="og:description" content="YopBot List est une liste de bots discord qui vous permet de trouver des bots discord de qualité." />
-                <meta property="og:image" content="/yopbot.png" />
-                <meta property="og:url" content="https://www.yopbotlist.me" />
-                <meta property="og:type" content="website" />
             </Head>
             <div className="main">
                 <Component {...pageProps} />

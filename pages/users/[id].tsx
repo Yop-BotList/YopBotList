@@ -5,13 +5,35 @@ import axios from "axios";
 import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
+import {useEffect, useState} from "react";
 
 export default function bot(props: { user: DiscordUser, userData: DiscordUser, db: { bots: Bot[], user: DBUser } }) {
+    const [isDev, setIsDev] = useState(false);
+    const [isPartner, setIsPartner] = useState(false);
+    const [isPremium, setIsPremium] = useState(false);
+    const [isStaff, setIsStaff] = useState(false);
+    const [isSupport, setIsSupport] = useState(false);
+    const [isVerificator, setIsVerificator] = useState(false);
+
+    useEffect(() => {
+        const userBadges = props.db.user.badges;
+
+        if (userBadges) userBadges.forEach(badge => {
+            if (badge.id === "dev" && badge.acquired) setIsDev(true);
+            if (badge.id === "partner" && badge.acquired) setIsPartner(true);
+            if (badge.id === "premium" && badge.acquired) setIsPremium(true);
+            if (badge.id === "staff" && badge.acquired) setIsStaff(true);
+            if (badge.id === "support" && badge.acquired) setIsSupport(true);
+            if (badge.id === "verificator" && badge.acquired) setIsVerificator(true);
+        });
+    })
+
     return (
         <>
             <Head>
-                <meta property="og:title" content={`${props.userData.username} | Utilisateurs`} />
-                <meta property="og:description" content={"YopBot List est une liste de bots discord qui vous permet de trouver des bots discord de qualité."} />
+                <title>{props.userData.username} - Users</title>
+                <meta property="og:title" content={`${props.userData.username} | Bots`} />
+                <meta property="og:description" content="YopBot List est une liste de bots discord qui vous permet de trouver des bots discord de qualité." />
                 <meta property="og:image" content={`https://cdn.discordapp.com/avatars/${props.userData.id}/${props.userData.avatar}.png`} />
                 <meta property="og:url" content={`https://www.yopbotlist.me/users/${props.userData.id}`} />
                 <meta property="og:type" content="website" />
@@ -24,7 +46,7 @@ export default function bot(props: { user: DiscordUser, userData: DiscordUser, d
                         <h1>{props.userData.username}#{props.userData.discriminator}</h1>
 
                         <div className="badges">
-                            {props.db.user?.badges && props.db.user.badges.filter(badge => badge.id === "dev")[0] ? (
+                            {isDev && (
                                 <div className="badge">
                                     <Image src="/dev.png" alt="Dev" width={32} height={32} />
                                     <span className="tooltip">
@@ -32,8 +54,8 @@ export default function bot(props: { user: DiscordUser, userData: DiscordUser, d
                                         <span className="downarrow"></span>
                                     </span>
                                 </div>
-                            ) : null}
-                            {props.db.user?.badges && props.db.user.badges.filter(badge => badge.id === "partner")[0] ? (
+                            )}
+                            {isPartner && (
                                 <div className="badge">
                                     <Image src="/partner.png" alt="Partner" width={32} height={32} />
                                     <span className="tooltip">
@@ -41,8 +63,8 @@ export default function bot(props: { user: DiscordUser, userData: DiscordUser, d
                                         <span className="downarrow"></span>
                                     </span>
                                 </div>
-                            ) : null}
-                            {props.db.user?.badges && props.db.user.badges.filter(badge => badge.id === "premium")[0] ? (
+                            )}
+                            {isPremium && (
                                 <div className="badge">
                                     <Image src="/premium.png" alt="Premium" width={32} height={32} />
                                     <span className="tooltip">
@@ -50,8 +72,8 @@ export default function bot(props: { user: DiscordUser, userData: DiscordUser, d
                                         <span className="downarrow"></span>
                                     </span>
                                 </div>
-                            ) : null}
-                            {props.db.user?.badges && props.db.user.badges.filter(badge => badge.id === "staff")[0] ? (
+                            )}
+                            {isStaff && (
                                 <div className="badge">
                                     <Image src="/staff.png" alt="Staff" width={32} height={32} />
                                     <span className="tooltip">
@@ -59,8 +81,8 @@ export default function bot(props: { user: DiscordUser, userData: DiscordUser, d
                                         <span className="downarrow"></span>
                                     </span>
                                 </div>
-                            ) : null}
-                            {props.db.user?.badges && props.db.user.badges.filter(badge => badge.id === "support")[0] ? (
+                            )}
+                            {isSupport && (
                                 <div className="badge">
                                     <Image src="/support.png" alt="Support" width={32} height={32} />
                                     <span className="tooltip">
@@ -68,8 +90,8 @@ export default function bot(props: { user: DiscordUser, userData: DiscordUser, d
                                         <span className="downarrow"></span>
                                     </span>
                                 </div>
-                            ) : null}
-                            {props.db.user?.badges && props.db.user.badges.filter(badge => badge.id === "verificator")[0] ? (
+                            )}
+                            {isVerificator && (
                                 <div className="badge">
                                     <Image src="/verificators.png" alt="Verificators" width={32} height={32} />
                                     <span className="tooltip">
@@ -77,7 +99,7 @@ export default function bot(props: { user: DiscordUser, userData: DiscordUser, d
                                         <span className="downarrow"></span>
                                     </span>
                                 </div>
-                            ) : null}
+                            )}
                         </div>
 
                         <div className="buttons">

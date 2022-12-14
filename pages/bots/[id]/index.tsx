@@ -36,7 +36,7 @@ export default function bot(props: { user: DiscordUser, bot: Bot, team: DiscordU
             <Head>
                 <title>{props.bot.username} - Bots</title>
                 <meta property="og:title" content={`${props.bot.username} | Bots`} />
-                <meta property="og:description" content={props.bot.description || "YopBot List est une liste de bots discord qui vous permet de trouver des bots discord de qualité."} />
+                <meta property="og:description" content={props.bot.description ? (props.bot.description.length > 100 ? props.bot.description.substring(0, 100) + "..." : props.bot.description) : "YopBot List est une liste de bots discord qui vous permet de trouver des bots discord de qualité."} />
                 <meta property="og:image" content={props.bot.avatar} />
                 <meta property="og:url" content={`https://www.yopbotlist.me/bots/${props.bot.botId}`} />
                 <meta property="og:type" content="website" />
