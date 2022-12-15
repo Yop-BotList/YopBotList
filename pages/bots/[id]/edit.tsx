@@ -173,6 +173,7 @@ export default function Index(props: { user: DiscordUser, bot: Bot }) {
                                     <span className={`${clicked1 && "clicked"}`} onClick={toggleClicked1}><BsQuestionCircle /></span>
                                     <div className="tooltip">
                                         <a href="https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks" target="_blank">Discord Webhook</a>
+                                        <span className="downarrow"></span>
                                     </div>
                                 </label>
                                 <input type="text" name="voteHook" id="voteHook" defaultValue={props.bot.voteHook}/>
@@ -183,6 +184,7 @@ export default function Index(props: { user: DiscordUser, bot: Bot }) {
                                     <span className={`${clicked2 && "clicked"}`} onClick={toggleClicked2}><BsQuestionCircle /></span>
                                     <div className="tooltip">
                                         <p>Ne pas partager, seul vous pouvez le connaitre.</p>
+                                        <span className="downarrow"></span>
                                     </div>
                                 </label>
                                 <input type="text" name="hookCode" id="hookCode" defaultValue={props.bot.hookCode}/>

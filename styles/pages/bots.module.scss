@@ -868,15 +868,26 @@
                         background-color: rgb($darker-bg);
                         color: rgb($white);
                         padding: 0.75rem;
-                        border-radius: 0.5rem 0.5rem 0 0.5rem;
+                        border-radius: 0.5rem;
                         font-size: 0.75rem;
                         font-weight: 300;
                         margin: 0.5rem;
                         scale: 0;
                         opacity: 0;
-                        bottom: 0.5rem;
-                        right: 1rem;
+                        bottom: 100%;
+                        right: -1rem;
                         transition: all 0.2s ease-in-out;
+
+                        .downarrow {
+                            position: absolute;
+                            top: 100%;
+                            right: 0.5rem;
+                            width: 0;
+                            height: 0;
+                            border-left: 0.5rem solid transparent;
+                            border-right: 0.5rem solid transparent;
+                            border-top: 0.5rem solid rgb($darker-bg);
+                        }
                         
                         a {
                             color: rgb($light-blue);

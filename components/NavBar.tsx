@@ -37,17 +37,21 @@ export default function NavBar(props: NavBarProps) {
                         </div>
 
                         <div className={`menu ${showMenu ? "show" : ""}`}>
+                            <span className="arrowUp"></span>
                             <div className="addBot" onClick={togglePopup}>
                                 <p>Ajouter un bot</p>
                                 <span></span>
+                                <span className="one"></span>
                             </div>
                             <Link href={`/users/${props.user.id}`}>
                                 <p>Profile</p>
                                 <span></span>
+                                <span className="one"></span>
                             </Link>
                             <Link href={"/api/logout"}>
                                 <p>Logout</p>
                                 <span></span>
+                                <span className="one"></span>
                             </Link>
                         </div>
                     </button>
