@@ -88,7 +88,7 @@ export interface Bot {
     serverCount: number;
     userCount: number;
     shardCount: number;
-    latestsStastsUpdate: Date;
+    latestStatsUpdate: Date;
     tags: string[];
     voteHook: string;
     hookCode: string;
