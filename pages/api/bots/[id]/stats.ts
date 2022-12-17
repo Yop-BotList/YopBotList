@@ -9,14 +9,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const apiToken = req.headers.authorization;
     const { serverCount, shardCount, userCount } = req.body;
-    const { botId } = req.query;
+    console.log(serverCount, shardCount, userCount);
+    const { id } = req.query;
 
-    const bot = await bots.findOne({ botId: botId });
+    const bot = await bots.findOne({ botId: id });
 
     if (!bot) return res.status(404).json({error: "Bot not found"});
 
     if (bot.apiToken !== apiToken) return res.status(401).json({error: "Unauthorized"});
-
 
     const lastUpdate = bot.latestStatsUpdate
     const now = new Date();
