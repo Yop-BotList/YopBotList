@@ -5,7 +5,7 @@ import { parseUser } from "../../../utils/parse-user";
 import { Bot, DiscordUser } from "../../../utils/types";
 import { FormEvent, useState } from "react";
 import EditPopup from "../../../components/EditPopup";
-import { BsQuestionCircle } from "react-icons/bs";
+import {BsArrowRepeat, BsFillEyeFill, BsFillEyeSlashFill, BsQuestionCircle} from "react-icons/bs";
 import Image from "next/image";
 import Head from "next/head";
 
@@ -13,16 +13,33 @@ export default function Index(props: { user: DiscordUser, bot: Bot }) {
     const [show, setShow] = useState(false);
     const [type, setType] = useState("");
 
+    const [showToken, setShowToken] = useState(false);
+    const [token, setToken] = useState(props.bot.apiToken);
+
     const [clicked1, setClicked1] = useState(false);
     const [clicked2, setClicked2] = useState(false);
 
     const toggleClicked1 = () => setClicked1(!clicked1);
     const toggleClicked2 = () => setClicked2(!clicked2);
+    const toggleShowToken = () => setShowToken(!showToken);
 
     const hidePopup = () => {
         setShow(false);
 
         if (!type) window.location.href = `/bots/${props.bot.botId}`;
+    }
+
+    const generateToken = () => {
+        axios.post("/api/bots/generate-token", {
+            botId: props.bot.botId
+        }).then(res => {
+            if (res.data.success) {
+                setToken(res.data.token);
+                setShowToken(true);
+            }
+        }).catch(err => {
+            console.log(err);
+        });
     }
 
     const updateBot = async (e: FormEvent<HTMLFormElement>) => {  
@@ -35,6 +52,7 @@ export default function Index(props: { user: DiscordUser, bot: Bot }) {
         const website = form.website.value;
         const voteHook = form.voteHook.value;
         const hookCode = form.hookCode.value;
+        const apiToken = form.apiToken.value;
 
         const tags = [];
 
@@ -51,7 +69,8 @@ export default function Index(props: { user: DiscordUser, bot: Bot }) {
                 website
             },
             voteHook,
-            hookCode
+            hookCode,
+            apiToken
         });
 
         setType(res.data.error);
@@ -188,6 +207,14 @@ export default function Index(props: { user: DiscordUser, bot: Bot }) {
                                     </div>
                                 </label>
                                 <input type="text" name="hookCode" id="hookCode" defaultValue={props.bot.hookCode}/>
+                            </div>
+                        </div>
+                        <div className="prefix">
+                            <label htmlFor="apiToken">Token de l'API</label>
+                            <div className="token">
+                                <input type={showToken ? "text" : "password"} name="apiToken" id="apiToken" defaultValue={token}/>
+                                <BsArrowRepeat onClick={generateToken} />
+                                <span onClick={toggleShowToken}>{showToken ? <BsFillEyeFill /> : <BsFillEyeSlashFill />}</span>
                             </div>
                         </div>
                         <div className="submit">

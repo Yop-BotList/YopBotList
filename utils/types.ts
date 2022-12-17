@@ -92,6 +92,7 @@ export interface Bot {
     tags: string[];
     voteHook: string;
     hookCode: string;
+    apiToken: string;
 }
 
 export interface DBUser {

@@ -15,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (!bot) return res.status(200).json({error: "nobot"});
 
-    const { prefix, description, tags, links, voteHook, hookCode } = req.body;
+    const { prefix, description, tags, links, voteHook, hookCode, apiToken } = req.body;
 
     if (!prefix) return res.status(200).json({error: "noprefix"});
     if (!description) return res.status(200).json({error: "nodescription"});
@@ -35,7 +35,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     bot.voteHook = voteHook;
     bot.hookCode = hookCode;
 
+    bot.apiToken = apiToken ?? generateApiToken();
+
     await bot.save();
 
     res.status(200).json({success: true});
+}
+
+function generateApiToken() {
+    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let token = "";
+
+    for (let i = 0; i < 32; i++) {
+        token += chars[Math.floor(Math.random() * chars.length)];
+    }
+
+    return token;
 }

@@ -23,5 +23,6 @@ export default models.bots || model("bots", new Schema({
     latestStatsUpdate: { type: Date, required: false },
     tags: { type: [String], required: false },
     voteHook: { type: String, required: false },
-    hookCode: { type: String, required: false }
+    hookCode: { type: String, required: false },
+    apiToken: { type: String, required: false }
 }));
