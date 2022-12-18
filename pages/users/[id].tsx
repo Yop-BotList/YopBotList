@@ -16,9 +16,7 @@ export default function bot(props: { user: DiscordUser, userData: DiscordUser, d
     const [isVerificator, setIsVerificator] = useState(false);
 
     useEffect(() => {
-        const userBadges = props.db.user.badges;
-
-        if (userBadges) userBadges.forEach(badge => {
+        if (props.db.user?.badges) props.db.user.badges.forEach(badge => {
             if (badge.id === "dev" && badge.acquired) setIsDev(true);
             if (badge.id === "partner" && badge.acquired) setIsPartner(true);
             if (badge.id === "premium" && badge.acquired) setIsPremium(true);
