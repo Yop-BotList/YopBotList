@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@types/cookie": "^0.5.1",
-    "@types/jsonwebtoken": "^8.5.9",
+    "@types/jsonwebtoken": "^9.0.0",
     "@types/marked": "^4.0.7",
     "@types/node": "18.11.9",
     "@types/react": "18.0.24",
