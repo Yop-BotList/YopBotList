@@ -10,6 +10,27 @@ $cool-bg: linear-gradient(45deg, rgba(242,172,52,1) 40%, rgba(88,101,242,1) 100%
 $cool-bg-hover: linear-gradient(45deg, rgba(255,184,64,1) 40%, rgba(100,110,255,1) 100%);
 $bg-setup: rgb(242,172,52);
 
+@-webkit-keyframes AnimationName {
+  0%{background-position:99% 0%}
+  50%{background-position:2% 100%}
+  100%{background-position:99% 0%}
+}
+@-moz-keyframes AnimationName {
+  0%{background-position:99% 0%}
+  50%{background-position:2% 100%}
+  100%{background-position:99% 0%}
+}
+@-o-keyframes AnimationName {
+  0%{background-position:99% 0%}
+  50%{background-position:2% 100%}
+  100%{background-position:99% 0%}
+}
+@keyframes AnimationName {
+  0%{background-position:99% 0%}
+  50%{background-position:2% 100%}
+  100%{background-position:99% 0%}
+}
+
 html,
 body {
   padding: 0;
@@ -34,10 +55,13 @@ html {
 
 body {
   color: rgb($white);
-  background: $bg-setup;
-  background: $cool-bg;
-  background-attachment: fixed;
-  overflow: overlay;
+  background: linear-gradient(40deg, #f2ac34, #5865f2);
+  background-size: 400% 400%;
+
+  -webkit-animation: AnimationName 19s ease infinite;
+  -moz-animation: AnimationName 19s ease infinite;
+  -o-animation: AnimationName 19s ease infinite;
+  animation: AnimationName 19s ease infinite;
 }
 
 .main {
