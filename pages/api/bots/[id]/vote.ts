@@ -38,7 +38,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         embeds: [
             {
                 title: "Vote !",
-                description: `${user.data.username}#${user.data.discriminator} vient de voter pour ${bot.username} !\nMerci à lui !\n\n${bot.username} a maintenant ${bot.likes+1} votes !`,
+                description: `${user.data.username}#${user.data.discriminator} vient de voter pour ${bot.username} !\nMerci à lui !\n\n${bot.username} a maintenant ${bot.likes ? bot.likes + 1 : 1} vote(s) !`,
                 color: 0xf2ac34,
                 url: `${process.env.APP_URL}/bots/${bot.botId}/vote`,
                 thumbnail: {
@@ -52,7 +52,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     await axios.post(hook, data);
 
-    bot.likes += 1;
+    bot.likes = bot.likes ? bot.likes + 1 : 1;
 
     await bot.save();
 
