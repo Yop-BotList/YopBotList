@@ -1,9 +1,9 @@
-name: Deploy to test
+name: test
 
 on: [push]
 
 jobs:
-  deploying:
+  test:
 
     runs-on: ubuntu-latest
 
@@ -15,28 +15,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         port: ${{ secrets.PORT }}
         password: ${{ secrets.PASSWORD }}
-        script: cd /var/www/yopbotlist-dev | git pull
-    - name: Installing dependencies
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        port: ${{ secrets.PORT }}
-        password: ${{ secrets.PASSWORD }}
-        script: cd /var/www/yopbotlist-dev | npm install
-    - name: Building app
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        port: ${{ secrets.PORT }}
-        password: ${{ secrets.PASSWORD }}
-        script: cd /var/www/yopbotlist-dev | npm run build
-    - name: Restarting app
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        port: ${{ secrets.PORT }}
-        password: ${{ secrets.PASSWORD }}
-        script: cd /var/www/yopbotlist-dev | pm2 restart 0
+        script: ls
