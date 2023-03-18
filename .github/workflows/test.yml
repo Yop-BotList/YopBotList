@@ -15,4 +15,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         port: ${{ secrets.PORT }}
         password: ${{ secrets.PASSWORD }}
-        script: cd / | ls
+        script: bash deploy_to_test.sh
