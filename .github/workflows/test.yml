@@ -3,7 +3,7 @@ name: Deploy to test
 on: [push]
 
 jobs:
-  wbesite:
+  deploying:
 
     runs-on: ubuntu-latest
 
